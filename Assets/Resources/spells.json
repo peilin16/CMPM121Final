@@ -141,10 +141,43 @@
     "mana_adder": "10",
     "projectile_trajectory": "homing"
   },
-  "EnemySluggishModifier": {
-    "name": "Sluggish",
-    "description": "Slow enemy 5 second, when the spell hit.",
-    "speed_mutipler": "0.5",
-    "mana_multiplier": "1.5"
+  "haste": {
+    "name": "haste",
+    "description": "Reduces cooldown and mana cost.",
+    "cooldown_multiplier": "0.8",
+    "mana_multiplier": "0.9",
+    "type": "modifier"
+  },
+  "arcane_nova": {
+    "name": "Arcane Nova",
+    "type": "base",
+    "description": "A slow-moving orb that erupts in an area of effect on impact.",
+    "icon": 3,
+    "damage": {
+      "amount": "10 power 5 / +",
+      "type": "arcane"
+    },
+    "aoe_damage": {
+      "amount": "40 power 5 / +",
+      "radius": "3",
+      "type": "arcane"
+    },
+    "mana_cost": "25",
+    "cooldown": "3",
+    "projectile": {
+      "trajectory": "straight",
+      "speed": "3",
+      "sprite": 0
+    }
+  },
+
+
+
+  "frost": {
+    "name": "Frost",
+    "description": "Slows enemies on hit.",
+    "type": "modifier",
+    "slow_factor": "0.3",
+    "slow_duration": "3.0"
   }
 }

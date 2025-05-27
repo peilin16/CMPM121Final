@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 public class ManaAmpModifier : ModifierSpell
 {
     private float manaMultiplier;
@@ -7,6 +8,10 @@ public class ManaAmpModifier : ModifierSpell
     public ManaAmpModifier(float multiplier)
     {
         this.manaMultiplier = multiplier;
+    }
+    public ManaAmpModifier(JObject obj):base(obj)
+    {
+        this.manaMultiplier = float.Parse(obj["mana_multiplier"].ToString());
     }
 
     public override Spell Application(Spell spell)

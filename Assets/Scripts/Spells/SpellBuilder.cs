@@ -73,57 +73,35 @@ public class SpellBuilder
                 switch (name)
                 {
                     case "damage-amplified":
-                        modifierSpellDB[pair.Key] = new DamageAmpModifier(
-                            float.Parse(obj["damage_multiplier"].ToString()),
-                            float.Parse(obj["mana_multiplier"].ToString()))
-                        { name = name, description = desc };
+                        modifierSpellDB[pair.Key] = new DamageAmpModifier(obj);
                         break;
 
                     case "speed-amplified":
-                        modifierSpellDB[pair.Key] = new SpeedAmpModifier(
-                            float.Parse(obj["speed_multiplier"].ToString()))
-                        { name = name, description = desc };
+                        modifierSpellDB[pair.Key] = new SpeedAmpModifier(obj);
                         break;
 
                     case "doubled":
-                        modifierSpellDB[pair.Key] = new DoublerModifier(
-                            float.Parse(obj["delay"].ToString()),
-                            float.Parse(obj["mana_multiplier"].ToString()),
-                            float.Parse(obj["cooldown_multiplier"].ToString()))
-                        { name = name, description = desc };
+                        modifierSpellDB[pair.Key] = new DoublerModifier(obj);
                         break;
 
                     case "split":
-                        modifierSpellDB[pair.Key] = new SplitterModifier(
-                            float.Parse(obj["angle"].ToString()),
-                            float.Parse(obj["mana_multiplier"].ToString()))
-                        { name = name, description = desc };
+                        modifierSpellDB[pair.Key] = new SplitterModifier(obj);
                         break;
 
                     case "chaotic":
-                        modifierSpellDB[pair.Key] = new ChaosModifier(
-                            obj["damage_multiplier"].ToString())
-                        { name = name, description = desc };
+                        modifierSpellDB[pair.Key] = new ChaosModifier(obj);
                         break;
 
                     case "homing":
-                        modifierSpellDB[pair.Key] = new HomingModifier(
-                            float.Parse(obj["damage_multiplier"].ToString()),
-                            int.Parse(obj["mana_adder"].ToString()))
-                        { name = name, description = desc };
+                        modifierSpellDB[pair.Key] = new HomingModifier(obj);
                         break;
 
                     case "mana-amplified":
-                        modifierSpellDB[pair.Key] = new ManaAmpModifier(
-                            float.Parse(obj["mana_multiplier"].ToString()))
-                        { name = name, description = desc };
+                        modifierSpellDB[pair.Key] = new ManaAmpModifier(obj);
                         break;
 
                     case "waver":
-                        modifierSpellDB[pair.Key] = new WaverModifier(
-                            float.Parse(obj["damage_multiplier"].ToString()),
-                            int.Parse(obj["mana_adder"].ToString()))
-                        { name = name, description = desc };
+                        modifierSpellDB[pair.Key] = new WaverModifier(obj);
                         break;
 
                     /*default:

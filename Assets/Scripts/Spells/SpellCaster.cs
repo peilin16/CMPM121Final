@@ -135,6 +135,7 @@ public class SpellCaster
                     wave,
                     this._spellPower
                 );
+                spell.applicateModify();
             }
 
            // Debug.Log($"Power Updated: {spell.GetName()} | " +    $"New Damage: {spell.final_damage}");

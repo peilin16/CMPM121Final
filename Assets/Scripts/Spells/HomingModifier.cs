@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 public class HomingModifier : ModifierSpell
 {
@@ -10,6 +11,12 @@ public class HomingModifier : ModifierSpell
     {
         this.damageMultiplier = damageMult;
         this.manaAdder = manaAdd;
+    }
+    public HomingModifier(JObject obj) : base(obj)
+    {
+        this.damageMultiplier = float.Parse(obj["damage_multiplier"].ToString());
+        this.manaAdder = int.Parse(obj["mana_adder"].ToString());
+
     }
     public override Spell Application(Spell spell)
     {

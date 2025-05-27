@@ -2,13 +2,16 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+
+
 
 public class Spell
 {
     public float last_cast;
     public SpellCaster owner;
     public Hittable.Team team;
-    public SpellData data;
+    public SpellData data;//负责存储基础数值的数据结构，请不要更改它内部的信息
     public List<ModifierSpell> modifierSpells = new List<ModifierSpell>();
 
 
@@ -27,6 +30,8 @@ public class Spell
     public bool castModified = true;
     public bool onHitModified = true;
     public float spellPower;
+
+
 
     public Spell(SpellCaster owner, SpellData data)
     {
@@ -89,6 +94,17 @@ public class Spell
         foreach (var modifier in modifierSpells)
             modifier.Application(this);
     }
+
+
+
+    /// <summary>
+    ///  spell cast method 
+    /// </summary>
+    /// <param name="where"></param>
+    /// <param name="target"></param>
+    /// <param name="team"></param>
+    /// <param name="isModified"></param>
+    /// <returns></returns>
     public virtual IEnumerator Cast(Vector3 where, Vector3 target, Hittable.Team team, bool isModified = true)
     {
 
@@ -101,8 +117,8 @@ public class Spell
             int i = 0;
             foreach (var modifier in modifierSpells)
             {
-                modifier.Cast(this);
-                CoroutineManager.Instance.StartManagedCoroutine("Player_spell", modifier.name + i, modifier.CastWithCoroutine(this));
+                modifier.Cast(this);//采用修改
+                CoroutineManager.Instance.StartManagedCoroutine("Player_spell", modifier.name + i, modifier.CastWithCoroutine(this)); //如果有协程的话
                 i += 1;
 
             }
@@ -126,6 +142,8 @@ public class Spell
         
         yield return new WaitForEndOfFrame();
     }
+
+
     public void ApplyFlatSpellpowerBoost(int bonus)
     {
         final_damage += bonus;
@@ -140,7 +158,7 @@ public class Spell
             int i = 0;
             foreach (var modifier in modifierSpells)
             {
-                modifier.Cast(this);
+                modifier.OnHit(this,other);// on hit change
                 CoroutineManager.Instance.StartManagedCoroutine("Player_spell", modifier.name + i, modifier.OnHitWithCoroutine(this, other));
                 i += 1;
 

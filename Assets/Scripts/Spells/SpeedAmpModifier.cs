@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 public class SpeedAmpModifier : ModifierSpell
 {
     private float speedMultiplier;
@@ -7,6 +8,10 @@ public class SpeedAmpModifier : ModifierSpell
     public SpeedAmpModifier(float mult)
     {
         this.speedMultiplier = mult;
+    }
+    public SpeedAmpModifier(JObject obj):base(obj)
+    {
+        this.speedMultiplier = float.Parse(obj["speed_multiplier"].ToString());
     }
     public override Spell Application(Spell spell)
     {

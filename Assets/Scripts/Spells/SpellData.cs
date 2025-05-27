@@ -1,5 +1,10 @@
 using UnityEngine;
 
+
+
+/// <summary>
+/// 请不要更改该类的数值
+/// </summary>
 public class SpellData
 {
     public string name;

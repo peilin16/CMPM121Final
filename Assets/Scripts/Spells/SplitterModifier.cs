@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+
 
 public class SplitterModifier : ModifierSpell
 {
@@ -11,7 +14,11 @@ public class SplitterModifier : ModifierSpell
         this.angle = angle;
         this.manaMultiplier = manaMult;
     }
-
+    public SplitterModifier(JObject obj)
+    {
+        this.angle = float.Parse(obj["angle"].ToString());
+        this.manaMultiplier = float.Parse(obj["mana_multiplier"].ToString());
+    }
     public override Spell Application(Spell spell)
     {
 

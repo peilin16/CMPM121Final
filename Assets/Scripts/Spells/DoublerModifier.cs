@@ -2,6 +2,9 @@
 // DoublerModifier.cs
 using UnityEngine;
 using System.Collections;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+
 
 public class DoublerModifier : ModifierSpell
 {
@@ -14,6 +17,12 @@ public class DoublerModifier : ModifierSpell
         this.delay = delay;
         this.manaMultiplier = manaMult;
         this.cooldownMultiplier = cooldownMult;
+    }
+    public DoublerModifier(JObject obj):base(obj)
+    {
+        this.delay = float.Parse(obj["delay"].ToString());
+        this.manaMultiplier = float.Parse(obj["mana_multiplier"].ToString());
+        this.cooldownMultiplier = float.Parse(obj["cooldown_multiplier"].ToString());
     }
 
     public override Spell Application(Spell spell)

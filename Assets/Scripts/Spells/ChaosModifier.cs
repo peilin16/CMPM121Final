@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 public class ChaosModifier : ModifierSpell
 {
     private string damageMultiplierExpr;
@@ -10,6 +11,12 @@ public class ChaosModifier : ModifierSpell
 
 
     }
+    public ChaosModifier(JObject obj) : base(obj)
+    {
+        this.damageMultiplierExpr = obj["damage_multiplier"].ToString();
+       
+    }
+
     public void setMultiplier()
     {
         this.multiplier = RPNCalculator.EvaluateFloat(damageMultiplierExpr, GameManager.Instance.currentWave);
