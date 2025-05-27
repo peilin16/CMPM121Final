@@ -7,7 +7,12 @@ using System.Collections.Generic;
 public class EnemyManager
 {
     public List<GameObject> enemies = new List<GameObject>();
-
+    private long _id;
+    public long Controller_ID
+    {
+        get => _id;
+        private set => _id = GameManager.Instance.GenerateID();
+    }
     public int enemy_count { get { return enemies.Count; } }
 
     public void AddEnemy(GameObject enemy)

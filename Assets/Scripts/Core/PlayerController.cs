@@ -11,7 +11,11 @@ public class PlayerController : MonoBehaviour ,Controller
 {
 
     public PlayerCharacter player;
-
+    private long _id;
+    public long Controller_ID {
+        get => _id;
+        private set => _id = GameManager.Instance.GenerateID();
+    } 
     public Character character
     {
         get => player;
@@ -38,7 +42,7 @@ public class PlayerController : MonoBehaviour ,Controller
 
     public int spellNum = 1;
     private int currentSpellIndex = 0;
-    public string playerID = "000001";
+    //public string playerID = "000001";
 
     public Unit unit;
     public GameObject restartUI;
@@ -49,6 +53,7 @@ public class PlayerController : MonoBehaviour ,Controller
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
     {
+
         unit = GetComponent<Unit>();
 
         GameManager.Instance.player = this.gameObject;

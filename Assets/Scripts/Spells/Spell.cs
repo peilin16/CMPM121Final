@@ -88,6 +88,10 @@ public class Spell
     {
         return (last_cast + GetCooldown() < Time.time);
     }
+    //如果需要更改base的数值请使用这个方法
+    public void ResetBaseData(float power, int wave) {
+
+    }
     public void applicateModify()
     {
         this.is_applicated = true;
@@ -95,7 +99,7 @@ public class Spell
             modifier.Application(this);
     }
 
-
+    
 
     /// <summary>
     ///  spell cast method 

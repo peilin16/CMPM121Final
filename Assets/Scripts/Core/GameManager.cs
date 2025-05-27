@@ -18,7 +18,7 @@ public class GameManager
     public Difficultly level = Difficultly.Easy;
     public int currentWave = 1;
     public int maxWaves = 0;
-
+    
     public int countdown;
     private static GameManager theInstance;
     public static GameManager Instance {  get
@@ -34,7 +34,12 @@ public class GameManager
             return theInstance;
         }
     }
-
+    private static long _nextID = 0;
+    //自增式ID生成
+    public long GenerateID()
+    {
+        return _nextID++;
+    }
     public GameObject player;
     public LevelManager levelManager;
     public ProjectileManager projectileManager;
