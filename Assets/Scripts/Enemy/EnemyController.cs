@@ -30,13 +30,19 @@ public class EnemyController : MonoBehaviour, Controller
         get => dead;
         set => dead = value;
     }
-
+    private long _id;
+    public long Controller_ID
+    {
+        get => _id;
+        private set => _id = value;
+    }
     //public EnemyCharacter enemy;
 
-        
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Controller_ID = GameManager.Instance.GenerateID();
         characterData.gameObject = this.gameObject;
         target = GameManager.Instance.player.transform;
         //hp.OnDeath += Die;

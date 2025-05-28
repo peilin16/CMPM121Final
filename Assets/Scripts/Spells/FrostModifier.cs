@@ -6,7 +6,7 @@ public class FrostModifier : ModifierSpell
 {
     private float slowFactor;
     private float slowDuration;
-
+    
     public FrostModifier(float slowFactor, float slowDuration)
     {
         this.slowFactor = slowFactor;
@@ -23,10 +23,10 @@ public class FrostModifier : ModifierSpell
 
     public override Spell OnHit(Spell spell, Controller other)
     {
-        if (other != null && other.character != null && other.character.movement != null)
+        if (other != null && other.character != null && other.character != null)
         {
             string group = "enemy_slow";
-            string id = other.GetInstanceID().ToString(); // Unique ID per enemy
+            string id = other.Controller_ID.ToString(); // Unique ID per enemy
 
             CoroutineManager.Instance.StartManagedCoroutine(group, id, ApplySlow(other));
         }
@@ -35,15 +35,16 @@ public class FrostModifier : ModifierSpell
 
     private IEnumerator ApplySlow(Controller target)
     {
-        if (target.character != null)
-        {
-            int originalSpeed = target.character.speed;
-            target.character.speed = (int)(target.character.speed * slowFactor);
+        if (target.character == null || target.character == null)
+            yield break;
 
-            yield return new WaitForSeconds(slowDuration);
+        float originalSpeed = target.character.speed;
+        target.character.speed *= (int)slowFactor;
 
-            if (target.character != null && target.character.movement != null)
-                target.character.speed = originalSpeed;
-        }
+        yield return new WaitForSeconds(slowDuration);
+
+        // Only reset if the movement still exists
+        if (target.character != null && target.character != null)
+            target.character.speed = (int)originalSpeed;
     }
 }

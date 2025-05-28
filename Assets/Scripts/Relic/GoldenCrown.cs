@@ -26,7 +26,7 @@ public class GoldenCrown : Relic
         {
             CoroutineManager.Instance.StopManagedCoroutine(
                 "GoldenCrown",
-                currentPC.playerID
+                currentPC.Controller_ID.ToString()
             );
         }
 
@@ -39,7 +39,7 @@ public class GoldenCrown : Relic
         // Æô¶¯3Ãë¼ÆÊ±Æ÷
         powerBoostCoroutine = CoroutineManager.Instance.StartManagedCoroutine(
             "GoldenCrown",
-            currentPC.playerID,
+            currentPC.Controller_ID.ToString(),
             SpellPowerBoostDuration()
         );
 

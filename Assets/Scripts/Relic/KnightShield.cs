@@ -31,7 +31,7 @@ public class KnightShield : Relic
             isActive = true;
             recoveryCoroutine = CoroutineManager.Instance.StartManagedCoroutine(
                 "KnightShield",
-                currentPC.playerID,
+                currentPC.Controller_ID.ToString(),
                 HealthRecoveryProcess()
             );
         }
@@ -85,7 +85,7 @@ public class KnightShield : Relic
             currentPC.player.hp.hp += (int)(currentPC.player.hp.max_hp * 0.01f);
             CoroutineManager.Instance.StopManagedCoroutine(
                 "KnightShield",
-                currentPC.playerID
+                currentPC.Controller_ID.ToString()
             );
         }
     }

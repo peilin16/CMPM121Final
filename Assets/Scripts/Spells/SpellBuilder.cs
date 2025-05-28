@@ -206,6 +206,8 @@ public class SpellBuilder
                 data.secondary_projectile.base_lifetime = RPNCalculator.EvaluateFloat(data.secondary_projectile.lifetime, wave, power);
         }
 
+
+        // if require the different effect spell
         if (data.name == "Arcane Spray")
             return new ArcaneSpraySpell(owner, data);
         
