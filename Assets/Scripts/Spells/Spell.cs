@@ -47,7 +47,7 @@ public class Spell
         this.final_secondary_damage = data.base_secondary_damage;
         this.final_trajectory = data.projectile.trajectory;
         this.final_life_time = data.projectile.base_lifetime;
-        this.final_N_val = data.N;
+        this.final_N_val = data.N_value;
     }
 
     public string GetName()
@@ -125,7 +125,7 @@ public class Spell
         this.final_secondary_damage = data.base_secondary_damage;
         this.final_trajectory = data.projectile.trajectory;
         this.final_life_time = data.projectile.base_lifetime;
-        this.final_N_val = data.N;
+        this.final_N_val = data.N_value;
 
         this.applicateModify();
     }

@@ -3,6 +3,7 @@ using System;
 
 public class EventBus 
 {
+    //所有回调都应写在eventbus里
     private static EventBus theInstance;
     public static EventBus Instance
     {
@@ -30,6 +31,10 @@ public class EventBus
     public float standStillTime { get; private set; }
 
     public void TriggerPlayerCast(PlayerController pc) => PlayerCast?.Invoke(pc);
+
+    // spell collison 法术碰撞事件
+    public Action<Controller, Spell> SpellCollision;
+    public Action<Controller, Spell> SpellCollideToWall;
 
     // 添加触发方法
     public void TriggerStandStill()

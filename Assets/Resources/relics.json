@@ -83,6 +83,19 @@
   },
 
   {
+    "name": "Rage Emblem",
+    "sprite": 8,
+    "trigger": {
+      "description": "When you take damage",
+      "type": "take-damage"
+    },
+    "effect": {
+      "description": "Increase damage dealt by 20% in 3 second",
+      "type": "increase-damage",
+      "amount": "20"
+    }
+  },
+  {
     "name": "Golden Crown",
     "sprite": 9,
     "trigger": {
@@ -107,21 +120,80 @@
       "type": "gain-spellpower",
       "amount": "20"
     }
+  },
+  {
+    "name": "Magic Bread",
+    "sprite": 11,
+    "trigger": {
+      "description": "When you cast a spell and miss...",
+      "type": "spell-miss",
+      "amount": null
+    },
+    "effect": {
+      "description": "...your next spell costs 5 less mana.",
+      "type": "reduce-next-spell-cost",
+      "amount": "5",
+      "until": "next-spell"
+    }
+  },
+  {
+    "name": "Lightning Boots",
+    "sprite": 12,
+    "trigger": {
+      "description": "When you take damage...",
+      "type": "take-damage",
+      "amount": null
+    },
+    "effect": {
+      "description": "...gain 50% speed boost for 3 seconds.",
+      "type": "temporary-speed-boost",
+      "amount": "1.5",
+      "until": "duration 3"
+    }
   }
   ,
   {
-    "name": "Red necklace",
-    "sprite": 6,
-
+    "name": "Adrenaline Rush",
+    "sprite": 13,
     "trigger": {
-      "description": "When your take this relic increase healthly permanently",
-      "type": "one-time"
+      "description": "When standing still for 2 seconds...",
+      "type": "stand-still",
+      "amount": "2"
     },
     "effect": {
-      "description": "Your max healthly will increase",
-      "type": "gain-healthly",
-      "amount": "10 wave 5 * +"
+      "description": "...gain 2x damage boost until you move.",
+      "type": "temporary-damage-boost",
+      "amount": "2",
+      "until": "move"
     }
-  }
+  },
 
+  {
+    "name": "Berserker's Rage",
+    "sprite": 14,
+    "trigger": {
+      "description": "When you kill an enemy...",
+      "type": "on-kill"
+    },
+    "effect": {
+      "description": "...gain 3 mutiplication damage boost until next spell.",
+      "type": "temporary-damage-boost",
+      "amount": "3",
+      "until": "next-spell"
+    }
+  },
+  {
+    "name": "Life Link",
+    "sprite": 15,
+    "trigger": {
+      "description": "When you deal damage",
+      "type": "on-deal-damage"
+    },
+    "effect": {
+      "description": "Heal 5 HP",
+      "type": "heal",
+      "amount": "5"
+    }
+
+  }
 ]
