@@ -192,7 +192,7 @@ public class Spell
     }
 
 
-    public void OnHit(Controller other, Vector3 impact)
+    public virtual void OnHit(Controller other, Vector3 impact)
     {
         //Debug.Log("on hit");
         if (onHitModified)
@@ -239,6 +239,13 @@ public class Spell
             }
         }
 
+
+    }
+
+
+
+    public virtual void OnHitToWall(Controller other, Vector3 impact)
+    {
 
     }
 }

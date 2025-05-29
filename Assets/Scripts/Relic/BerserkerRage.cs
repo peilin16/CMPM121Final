@@ -1,6 +1,8 @@
 using UnityEngine;
 using Newtonsoft.Json.Linq;
 using System.Collections;
+
+
 public class BerserkerRage:Relic
 {
     private bool isBuffActive = false;

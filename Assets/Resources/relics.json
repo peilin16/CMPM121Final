@@ -153,23 +153,7 @@
   }
   ,
   {
-    "name": "Adrenaline Rush",
-    "sprite": 13,
-    "trigger": {
-      "description": "When standing still for 2 seconds...",
-      "type": "stand-still",
-      "amount": "2"
-    },
-    "effect": {
-      "description": "...gain 2x damage boost until you move.",
-      "type": "temporary-damage-boost",
-      "amount": "2",
-      "until": "move"
-    }
-  },
-
-  {
-    "name": "Berserker's Rage",
+    "name": "Berserker Rage",
     "sprite": 14,
     "trigger": {
       "description": "When you kill an enemy...",
@@ -190,9 +174,9 @@
       "type": "on-deal-damage"
     },
     "effect": {
-      "description": "Heal 5 HP",
+      "description": "Heal 2 HP",
       "type": "heal",
-      "amount": "5"
+      "amount": "2"
     }
 
   }

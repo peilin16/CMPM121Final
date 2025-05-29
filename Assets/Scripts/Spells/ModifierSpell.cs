@@ -18,6 +18,7 @@ public abstract class ModifierSpell
     
     public virtual Spell Cast(Spell spell) { return spell; }//投射时执行的方法
     public virtual Spell OnHit(Spell spell, Controller other) { return spell; }// 咒语击中敌人时执行的方法 
+    public virtual Spell OnHitToWall(Spell spell, Controller other) { return spell; }// 咒语击中墙面时执行的方法 
     public virtual Spell Application(Spell spell) { return spell; } //在需要时执行一次的方法，例如更改一次数值
     public virtual IEnumerator CastWithCoroutine(Spell spell)//投射时执行的协程
     {

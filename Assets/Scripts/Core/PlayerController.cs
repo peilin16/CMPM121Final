@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour ,Controller
         //var r = GameManager.Instance.relicManager.GetRelic<MysteriousMask> ("Mysterious Mask");
         //var r = GameManager.Instance.relicManager.GetRelic<KnightShield> ("Knight Shield");
         //var r = GameManager.Instance.relicManager.GetRelic<GoldenCrown> ("Golden Crown");
-        var r = GameManager.Instance.relicManager.GetRelic<GrandChronicle> ("Grand Chronicle");
+        var r = GameManager.Instance.relicManager.GetRelic<LifeLink> ("Life Link");
         r.Application(this);
         carriedRelic.Add(r);
     }
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour ,Controller
 
     // Update is called once per frame
      void Update()
-    {
+     {
         var state = GameManager.Instance.state;
         if (state == GameManager.GameState.INWAVE)
         {
@@ -151,6 +151,7 @@ public class PlayerController : MonoBehaviour ,Controller
             relic.Update(this); // Pass PlayerController to relic
         }
         //Stop checking
+        //Íæ¼Ò¾²Ö¹¼ì²é
         if ((transform.position - lastPosition).sqrMagnitude < 0.001f)
         {
             localStandStillTime += Time.deltaTime;
@@ -159,6 +160,7 @@ public class PlayerController : MonoBehaviour ,Controller
                 EventBus.Instance.TriggerStandStill();
                 localStandStillTime = 0f;
             }
+
         }
         else
         {
@@ -173,7 +175,7 @@ public class PlayerController : MonoBehaviour ,Controller
         carriedRelic.Add(relic);
     }
      void OnAttack(InputValue value)
-    {
+     {
         if (GameManager.Instance.state == GameManager.GameState.PREGAME || GameManager.Instance.state == GameManager.GameState.GAMEOVER) return;
         Vector2 mouseScreen = Mouse.current.position.value;
         Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(mouseScreen);
@@ -182,7 +184,7 @@ public class PlayerController : MonoBehaviour ,Controller
         //StartCoroutine(spellcaster.modifierCast(transform.position, mouseWorld, currentSpellIndex));
 
 
-    }
+     }
 
      void OnMove(InputValue value)
     {

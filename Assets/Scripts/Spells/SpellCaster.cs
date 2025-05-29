@@ -117,7 +117,7 @@ public class SpellCaster
             yield return spell.Cast(where, target, team);
         }
 
-        Debug.Log($"Spell Cast:[Spell Reset] {spell.GetName()} - Damage: {spell.final_damage},  -Base Damage: {spell.data.base_damage}, Mana: {spell.final_mana_cost}");
+        Debug.Log($"Spell Cast:[Spell Reset] {spell.GetName()} - Damage: {spell.final_damage},  -Base Damage: {spell.data.base_damage}, Mana Cost: {spell.final_mana_cost}");
         //OnSpellCast?.Invoke(spell);
         yield break;
     }
