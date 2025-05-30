@@ -9211,7 +9211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3157402949940865734, guid: 7ca432ceb7bb94b4c85dd1d42dba15ea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 686.88794
+      value: 717
       objectReference: {fileID: 0}
     - target: {fileID: 3157402949940865734, guid: 7ca432ceb7bb94b4c85dd1d42dba15ea, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -11185,7 +11185,6 @@ MonoBehaviour:
   spellui: {fileID: 2085212185}
   playerTile: {fileID: 232596023}
   spellNum: 1
-  playerID: 000001
   unit: {fileID: 0}
   restartUI: {fileID: 0}
 --- !u!4 &1718273953

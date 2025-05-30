@@ -60,7 +60,7 @@ public class ProjectileController : MonoBehaviour
             //Debug.Log("project tile collison to wall");
         }
         EventBus.Instance.TriggerSpellCollision(pc);
-        Debug.Log("project tile collison");
+        //Debug.Log("project tile collison");
         Destroy(gameObject);
     }
 
