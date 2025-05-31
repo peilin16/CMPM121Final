@@ -10,7 +10,7 @@ using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Image level_selector;
+    //public Image level_selector;
     public GameObject button;
     public GameObject enemy;
     public SpawnPoint[] SpawnPoints;
@@ -19,17 +19,17 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        CreateButton("Easy", 40);
+        /*CreateButton("Easy", 40);
         CreateButton("Medium", 0);
-        CreateButton("Endless", -40);
+        CreateButton("Endless", -40);*/
     }
 
     void CreateButton(string label, float yOffset)
     {
-        GameObject btn = Instantiate(button, level_selector.transform);
-        btn.transform.localPosition = new Vector3(0, yOffset);
+       // GameObject btn = Instantiate(button, level_selector.transform);
+        /*btn.transform.localPosition = new Vector3(0, yOffset);
         btn.GetComponent<MenuSelectorController>().spawner = this;
-        btn.GetComponent<MenuSelectorController>().SetLevel(label);
+        btn.GetComponent<MenuSelectorController>().SetLevel(label);*/
     }
 
     public void StartLevel(string levelname)
@@ -46,20 +46,21 @@ public class EnemySpawner : MonoBehaviour
         {
             GameManager.Instance.level = GameManager.Difficultly.Endless;
         }
+        //level_selector.gameObject.SetActive(false);
         GameManager.Instance.currentWave = 1;
         GameManager.Instance.state = GameManager.GameState.INWAVE;
         Debug.Log(levelname);
         currentLevel = GameManager.Instance.levelManager.GetLevel(levelname);
-        level_selector.gameObject.SetActive(false);
+        
 
         GameManager.Instance.player.GetComponent<PlayerController>().StartLevel();
         CoroutineManager.Instance.StartManagedCoroutine("EnemySpawn","wave "+ GameManager.Instance.currentWave, SpawnWave());
-        //StartCoroutine(SpawnWave());
+        //StartCoroutine(SpawnWave())
     }
 
     public void NextWave()
     {
-        if (GameManager.Instance.state == GameManager.GameState.WAVEEND)
+        /*if (GameManager.Instance.state == GameManager.GameState.WAVEEND)
         {
             GameManager.Instance.currentWave += 1;
             currentLevel.NextWave();
@@ -69,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
             //StartCoroutine(SpawnWave());
             else
                 Debug.Log("All waves complete.");
-        }
+        }*/
     }
 
     IEnumerator SpawnWave()
@@ -90,7 +91,7 @@ public class EnemySpawner : MonoBehaviour
                 for (int j = 0; j < groupSize && spawned < total; j++)
                 {
                     
-                    SpawnEnemy(spawn.enemySequence[spawned], spawn.location);
+                    //SpawnEnemy(spawn.enemySequence[spawned], spawn.location);
                     spawned++;
                 }
                 Debug.Log("Success spawn");
