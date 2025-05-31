@@ -67,6 +67,7 @@ public class EnemyController : MonoBehaviour, Controller
     {
         characterData.StartLevel();
     }
+
     void DoAttack()
     {
         if (last_attack + 2 < Time.time)

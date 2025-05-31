@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 
 public class LevelData
 {
+    //Final 项目将不再使用该class 
     public string name;
     public int total_waves;
     public int current_wave = 1;

@@ -39,7 +39,6 @@ public class EnemySpawner : MonoBehaviour
 
         if (levelname.Equals("Medium"))
         {
-
             GameManager.Instance.level = GameManager.Difficultly.Medium;
         }
         else if((levelname.Equals("Endless")))

@@ -14,7 +14,7 @@ public class CharacterSelector : MonoBehaviour
     public TextMeshProUGUI ChImfomation1;
     public TextMeshProUGUI ChImfomation2;
     public TextMeshProUGUI ChImfomation3;
-    public GameObject DifficultSelector;
+    //public GameObject DifficultSelector;
     public PlayerController playerController;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
@@ -31,8 +31,12 @@ public class CharacterSelector : MonoBehaviour
         
         GameManager.Instance.playerSpriteManager.currentIconIndex = index;
         playerController.loadCharacter(index);
-        DifficultSelector.SetActive(true);
+        //DifficultSelector.SetActive(true);
         gameObject.SetActive(false);
+
+
+
+
     }
     public void DisplayInfo()
     {

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class LevelSpawn
 {
+    //  Final 项目将不再使用该class 
 
- 
     public int final_count;
 
     public string count_exp;

@@ -8,9 +8,9 @@ public class LevelManager
 
     public LevelManager()
     {
-        LoadLevels();
+        LoadLevels(1);
     }
-
+    /*
     public LevelData GetLevel(string name)
     {
         if (levels.TryGetValue(name, out LevelData level))
@@ -18,24 +18,32 @@ public class LevelManager
 
         Debug.LogWarning($"Level '{name}' not found.");
         return null;
-    }
+    }*/
 
-    private void LoadLevels()
+    public void LoadLevels(int level)
     {
-        TextAsset jsonText = Resources.Load<TextAsset>("levels");
-        if (jsonText == null)
-        {
-            Debug.LogError("levels.json not found in Resources folder!");
-            return;
-        }
+        string levelName = $"level{level}";
 
-        JArray root = JArray.Parse(jsonText.text);
-        foreach (var obj in root)
+        // 清除旧关卡数据
+        levels.Clear();
+
+        // 通知 RoomManager 加载房间数据
+        GameManager.Instance.roomManager.LoadJson(levelName);
+
+        // 获取 RoomManager 中的房间数据（已加载）
+        var loadedRooms = GameManager.Instance.roomManager.roomDict;
+
+        // 生成新 Level
+        Level newLevel = new Level
         {
-            LevelData level = new LevelData();
-            level.JsonLoad((JObject)obj);
-            levels[level.name] = level;
-        }
+            level_id = level,
+            level_name = levelName,
+            rooms = new List<Room>(loadedRooms.Values)
+        };
+
+        levels[levelName] = newLevel;
+
+        Debug.Log($"Level {levelName} loaded with {newLevel.rooms.Count} rooms.");
     }
 
 

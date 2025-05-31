@@ -1,0 +1,45 @@
+[
+  {
+    "name": "Room_1_1",
+    "waves": [
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 5,
+            "hp": 27,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 8,
+            "hp": 27,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 5,
+            "hp": 27,
+            "damage": 5,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 1,
+            "hp": 41,
+            "speed": 7,
+            "location": "random"
+          }
+        ]
+      }
+    ]
+  }
+]

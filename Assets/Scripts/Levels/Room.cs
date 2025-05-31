@@ -1,5 +1,7 @@
 // Room.cs
 using UnityEngine;
+using System.Collections.Generic;
+
 
 
 public class Room
@@ -9,6 +11,11 @@ public class Room
     public Bounds bounds;
     public bool isActive = false;
     public bool isExplored = false;
+    public List<List<EnemyCharacter>> waves = new List<List<EnemyCharacter>>();
+
+
+
+
 
     public Room(string name, int id, Bounds bounds)
     {

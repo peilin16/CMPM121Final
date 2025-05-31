@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using Newtonsoft.Json.Linq;
 public class RoomManager : MonoBehaviour
 {
     public Transform player;
@@ -24,7 +24,79 @@ public class RoomManager : MonoBehaviour
                 roomDict[name] = room;
             }
         }
+        //this.LoadJson("level1_rooms");
     }
+
+
+    public void LoadJson(string level)
+    {
+        TextAsset jsonText = Resources.Load<TextAsset>(level);
+        if (jsonText == null)
+        {
+            Debug.LogError("rooms.json not found in Resources folder.");
+            return;
+        }
+
+        var enemyManager = GameManager.Instance.enemyCharacterManager;
+
+        JArray root = JArray.Parse(jsonText.text);
+        foreach (var roomObj in root)
+        {
+            string name = roomObj["name"].ToString();
+            if (!roomDict.TryGetValue(name, out Room room))
+            {
+                Debug.LogWarning($"Room {name} not found in scene.");
+                continue;
+            }
+
+            var wavesArray = roomObj["waves"] as JArray;
+            foreach (var waveObj in wavesArray)
+            {
+                List<EnemyCharacter> waveList = new List<EnemyCharacter>();
+
+                foreach (var enemyObj in waveObj["enemies"])
+                {
+                    string type = enemyObj["enemy"]?.ToString();
+                    int count = (int)(enemyObj["count"] ?? 1);
+
+                    EnemyCharacter baseCharacter = enemyManager.GetEnemy(type);
+                    if (baseCharacter == null)
+                    {
+                        Debug.LogWarning($"Enemy type {type} not found in EnemyCharacterManager.");
+                        continue;
+                    }
+
+                    for (int i = 0; i < count; i++)
+                    {
+                        EnemyCharacter clone = new EnemyCharacter(baseCharacter.enemySprite, baseCharacter.type);
+
+                        if (enemyObj["hp"] != null)
+                            clone.final_healthly = (int)enemyObj["hp"];
+                        else
+                            clone.final_healthly = baseCharacter.final_healthly;
+
+                        if (enemyObj["damage"] != null)
+                            clone.final_damage = (float)enemyObj["damage"];
+                        else
+                            clone.final_damage = baseCharacter.final_damage;
+
+                        if (enemyObj["speed"] != null)
+                            clone.final_speed = (float)enemyObj["speed"];
+                        else
+                            clone.final_speed = baseCharacter.final_speed;
+
+                        waveList.Add(clone);
+                    }
+                }
+
+                room.waves.Add(waveList);
+            }
+
+            Debug.Log($"Room {name} loaded with {room.waves.Count} waves.");
+        }
+    }
+
+
 
     void Update()
     {
