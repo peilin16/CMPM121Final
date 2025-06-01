@@ -5,7 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - unit
-  - projectile
+  - Room
+  - Teasure
+  - Portal
   layers:
   - Default
   - TransparentFX

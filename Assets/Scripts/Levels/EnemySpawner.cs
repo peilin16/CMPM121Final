@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemy;
     public SpawnPoint[] SpawnPoints;
 
-    private LevelData currentLevel;
+    private Level currentLevel;
 
     void Start()
     {
@@ -32,24 +32,24 @@ public class EnemySpawner : MonoBehaviour
         btn.GetComponent<MenuSelectorController>().SetLevel(label);*/
     }
 
-    public void StartLevel(string levelname)
+    public void StartLevel()
     {
-        GameManager.Instance.difficultly = levelname;
+        //GameManager.Instance.difficultly = levelname;
 
 
-        if (levelname.Equals("Medium"))
+        /*if (levelname.Equals("Medium"))
         {
             GameManager.Instance.level = GameManager.Difficultly.Medium;
         }
         else if((levelname.Equals("Endless")))
         {
             GameManager.Instance.level = GameManager.Difficultly.Endless;
-        }
+        }*/
         //level_selector.gameObject.SetActive(false);
         GameManager.Instance.currentWave = 1;
-        GameManager.Instance.state = GameManager.GameState.INWAVE;
-        Debug.Log(levelname);
-        currentLevel = GameManager.Instance.levelManager.GetLevel(levelname);
+        GameManager.Instance.state = GameManager.GameState.EXPEDITION;
+        //Debug.Log(levelname);
+        //currentLevel = GameManager.Instance.levelManager.GetLevel(levelname);
         
 
         GameManager.Instance.player.GetComponent<PlayerController>().StartLevel();
@@ -78,7 +78,7 @@ public class EnemySpawner : MonoBehaviour
         GameManager.Instance.state = GameManager.GameState.INWAVE;
         //Debug.Log("Next Wave");
         //currentLevel.NextWave();
-        foreach (var spawn in currentLevel.Spawns)
+        /*foreach (var spawn in currentLevel.Spawns)
         {
             int i = 0;
             int spawned = 0;
@@ -97,7 +97,7 @@ public class EnemySpawner : MonoBehaviour
                 yield return new WaitForSeconds(currentLevel.delay_sec);
                 i++;
             }
-        }
+        }*/
         
         yield return new WaitWhile(() => GameManager.Instance.enemyManager.enemy_count > 0);
 

@@ -24,6 +24,7 @@ public class RoomManager : MonoBehaviour
                 roomDict[name] = room;
             }
         }
+        GameManager.Instance.roomManager = this;
         //this.LoadJson("level1_rooms");
     }
 

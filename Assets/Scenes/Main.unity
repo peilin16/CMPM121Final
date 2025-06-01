@@ -4741,8 +4741,8 @@ MonoBehaviour:
   ChImfomation1: {fileID: 2117098312}
   ChImfomation2: {fileID: 945423262}
   ChImfomation3: {fileID: 1984421212}
-  DifficultSelector: {fileID: 1115058366}
   playerController: {fileID: 1718273952}
+  enemySpawner: {fileID: 1803653856}
 --- !u!1 &663390607
 GameObject:
   m_ObjectHideFlags: 0
@@ -11822,6 +11822,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 5974830082219523945, guid: f34a30cd4de40054fbf581a2defa05b3, type: 3}
+--- !u!114 &1803653856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803653849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97135967223141f45bae983aa311bca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  enemy: {fileID: 1832418719708313566, guid: bebfa21247182184d92ab200b93e6cf0, type: 3}
+  SpawnPoints: []
 --- !u!1 &1858008857
 GameObject:
   m_ObjectHideFlags: 0
@@ -64571,6 +64586,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2107732465084047900, guid: b531ed09aa5f5a847918ddac98e4bf16, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1803653855}
+    - targetCorrespondingSourceObject: {fileID: 2107732465084047900, guid: b531ed09aa5f5a847918ddac98e4bf16, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1803653856}
   m_SourcePrefab: {fileID: 100100000, guid: b531ed09aa5f5a847918ddac98e4bf16, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

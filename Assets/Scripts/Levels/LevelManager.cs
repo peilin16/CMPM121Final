@@ -4,21 +4,21 @@ using Newtonsoft.Json.Linq;
 
 public class LevelManager
 {
-    public Dictionary<string, LevelData> levels = new Dictionary<string, LevelData>();
+    public Dictionary<string, Level> levels = new Dictionary<string, Level>();
 
     public LevelManager()
     {
-        LoadLevels(1);
+        //LoadLevels(GameManager.Instance.currentLevel);
     }
-    /*
-    public LevelData GetLevel(string name)
+    
+    public Level GetLevel(string name)
     {
-        if (levels.TryGetValue(name, out LevelData level))
+        if (levels.TryGetValue(name, out Level level))
             return level;
 
         Debug.LogWarning($"Level '{name}' not found.");
         return null;
-    }*/
+    }
 
     public void LoadLevels(int level)
     {

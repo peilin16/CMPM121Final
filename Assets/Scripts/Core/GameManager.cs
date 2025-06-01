@@ -31,9 +31,10 @@ public class GameManager
                 theInstance = new GameManager();
                 theInstance.relicManager = new RelicManager();
                 theInstance.enemyCharacterManager = new EnemyCharacterManager();
-                theInstance.levelManager = new LevelManager();
+                
                 theInstance.enemyManager = new EnemyManager();
-                theInstance.roomManager = new RoomManager();
+                //theInstance.roomManager = new RoomManager();
+                theInstance.levelManager = new LevelManager();
             }    
             return theInstance;
         }

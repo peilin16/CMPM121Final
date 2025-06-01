@@ -40,6 +40,6 @@ public class MenuSelectorController : MonoBehaviour
     public void StartLevel()
     {
         Debug.Log(this.level + "  " + this.label.text + "  " + "IDK");
-        spawner.StartLevel(this.label.text);
+        //spawner.StartLevel(this.label.text);
     }
 }

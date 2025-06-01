@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour ,Controller
      void Update()
      {
         var state = GameManager.Instance.state;
-        if (state == GameManager.GameState.INWAVE)
+        if (state == GameManager.GameState.INWAVE || state == GameManager.GameState.EXPEDITION)
         {
             if (!GameManager.Instance.isTiming)
             {

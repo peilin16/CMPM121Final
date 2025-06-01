@@ -16,12 +16,13 @@ public class CharacterSelector : MonoBehaviour
     public TextMeshProUGUI ChImfomation3;
     //public GameObject DifficultSelector;
     public PlayerController playerController;
+    public EnemySpawner enemySpawner;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
     {
-        /*spriteView1.Apply("mage", GameManager.Instance.playerSpriteManager.Get(0));
+        spriteView1.Apply("mage", GameManager.Instance.playerSpriteManager.Get(0));
         spriteView2.Apply("warlock", GameManager.Instance.playerSpriteManager.Get(1));
-        spriteView3.Apply("battlemage", GameManager.Instance.playerSpriteManager.Get(2));*/
+        spriteView3.Apply("battlemage", GameManager.Instance.playerSpriteManager.Get(2));
         DisplayInfo();
     }
 
@@ -33,7 +34,7 @@ public class CharacterSelector : MonoBehaviour
         playerController.loadCharacter(index);
         //DifficultSelector.SetActive(true);
         gameObject.SetActive(false);
-
+        enemySpawner.StartLevel();
 
 
 
