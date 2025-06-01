@@ -34,8 +34,8 @@ public class CharacterSelector : MonoBehaviour
         playerController.loadCharacter(index);
         //DifficultSelector.SetActive(true);
         gameObject.SetActive(false);
-        enemySpawner.StartLevel();
-
+        //enemySpawner.StartWave();
+        GameManager.Instance.StartGame();
 
 
     }

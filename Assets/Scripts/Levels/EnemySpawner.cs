@@ -11,11 +11,11 @@ using TMPro;
 public class EnemySpawner : MonoBehaviour
 {
     //public Image level_selector;
-    public GameObject button;
-    public GameObject enemy;
-    public SpawnPoint[] SpawnPoints;
 
-    private Level currentLevel;
+    private Room currentRoom;
+    private int currentWave;
+    
+
 
     void Start()
     {
@@ -32,29 +32,12 @@ public class EnemySpawner : MonoBehaviour
         btn.GetComponent<MenuSelectorController>().SetLevel(label);*/
     }
 
-    public void StartLevel()
+    public void StartWave(Room room)
     {
-        //GameManager.Instance.difficultly = levelname;
-
-
-        /*if (levelname.Equals("Medium"))
-        {
-            GameManager.Instance.level = GameManager.Difficultly.Medium;
-        }
-        else if((levelname.Equals("Endless")))
-        {
-            GameManager.Instance.level = GameManager.Difficultly.Endless;
-        }*/
-        //level_selector.gameObject.SetActive(false);
+        currentRoom = room;
         GameManager.Instance.currentWave = 1;
-        GameManager.Instance.state = GameManager.GameState.EXPEDITION;
-        //Debug.Log(levelname);
-        //currentLevel = GameManager.Instance.levelManager.GetLevel(levelname);
-        
 
-        GameManager.Instance.player.GetComponent<PlayerController>().StartLevel();
-        CoroutineManager.Instance.StartManagedCoroutine("EnemySpawn","wave "+ GameManager.Instance.currentWave, SpawnWave());
-        //StartCoroutine(SpawnWave())
+        CoroutineManager.Instance.StartManagedCoroutine("EnemySpawn", "wave " + GameManager.Instance.currentWave, SpawnWave(room));
     }
 
     public void NextWave()
@@ -72,38 +55,41 @@ public class EnemySpawner : MonoBehaviour
         }*/
     }
 
-    IEnumerator SpawnWave()
+    IEnumerator SpawnWave(Room room)
     {
-
         GameManager.Instance.state = GameManager.GameState.INWAVE;
-        //Debug.Log("Next Wave");
-        //currentLevel.NextWave();
-        /*foreach (var spawn in currentLevel.Spawns)
+
+        int waveIndex = GameManager.Instance.currentWave - 1;
+
+        if (waveIndex < 0 || waveIndex >= room.waves.Count)
         {
-            int i = 0;
-            int spawned = 0;
-            int total = spawn.final_count;
-            List<int> sequence = spawn.sequence ?? new List<int> { 1 };
-            while (spawned < total)
-            {
-                int groupSize = sequence[i % sequence.Count];
-                for (int j = 0; j < groupSize && spawned < total; j++)
-                {
-                    
-                    //SpawnEnemy(spawn.enemySequence[spawned], spawn.location);
-                    spawned++;
-                }
-                Debug.Log("Success spawn");
-                yield return new WaitForSeconds(currentLevel.delay_sec);
-                i++;
-            }
-        }*/
-        
+            Debug.LogWarning("Wave index out of range.");
+            yield break;
+        }
+
+        List<EnemyCharacter> waveEnemies = room.waves[waveIndex];
+
+        foreach (var enemyChar in waveEnemies)
+        {
+            // 在房间边界内随机生成位置
+            Vector3 spawnPos = new Vector3(
+                Random.Range(room.bounds.min.x + 0.5f, room.bounds.max.x - 0.5f),
+                Random.Range(room.bounds.min.y + 0.5f, room.bounds.max.y - 0.5f),
+                0
+            );
+
+            enemyChar.StartWave(); // 初始化血量等
+            GameManager.Instance.enemyManager.SpawnEnemy(enemyChar, spawnPos); // 你已有的函数
+        }
+
+        // 等待所有敌人死亡
         yield return new WaitWhile(() => GameManager.Instance.enemyManager.enemy_count > 0);
 
         if (GameManager.Instance.state != GameManager.GameState.GAMEOVER)
             GameManager.Instance.state = GameManager.GameState.WAVEEND;
     }
+
+    /*
     //spawn enemy
     void SpawnEnemy(EnemyCharacter character, string location)
     {
@@ -122,6 +108,7 @@ public class EnemySpawner : MonoBehaviour
 
     Vector3 PickSpawnPoint(string location)
     {
+        
         List<SpawnPoint> filtered = SpawnPoints
             .Where(p => location == "random" || p.tag.ToLower().Contains(location.Replace("random", "").Trim().ToLower()))
             .ToList();
@@ -131,5 +118,5 @@ public class EnemySpawner : MonoBehaviour
         Vector3 basePos = filtered[UnityEngine.Random.Range(0, filtered.Count)].transform.position;
         Vector2 offset = UnityEngine.Random.insideUnitCircle * 1.5f;
         return basePos + new Vector3(offset.x, offset.y, 0);
-    }
+    }*/
 }

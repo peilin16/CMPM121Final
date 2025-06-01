@@ -25,7 +25,7 @@ public class EnemyManager
         GameManager.Instance.defectCount++;
         enemies.Remove(enemy);
     }
-
+    //销毁所有的敌人对象
     public void DestroyAllEnemies()
     {
         List<GameObject> enemiesToDestroy = new List<GameObject>(enemies);
@@ -43,11 +43,29 @@ public class EnemyManager
         }
         enemies.Clear();
     }
-
+    //获取最近的敌人
     public GameObject GetClosestEnemy(Vector3 point)
     {
         if (enemies == null || enemies.Count == 0) return null;
         if (enemies.Count == 1) return enemies[0];
         return enemies.Aggregate((a, b) => (a.transform.position - point).sqrMagnitude < (b.transform.position - point).sqrMagnitude ? a : b);
     }
+
+
+    //敌人部署方法
+    public void SpawnEnemy(EnemyCharacter character, Vector3 pos)
+    {
+
+        GameObject enemyObj = Instantiate(enemy, pos, Quaternion.identity);
+        enemyObj.GetComponent<SpriteRenderer>().sprite =
+            GameManager.Instance.enemySpriteManager.Get(character.enemySprite.spriteIndex);
+        EnemyController controller = enemyObj.GetComponent<EnemyController>();
+        controller.character = character; // assign the character first
+        controller.character.gameObject = enemyObj; //set gameObject
+        controller.character.StartWave();
+        GameManager.Instance.enemyManager.AddEnemy(enemyObj);
+    }
+
+
+
 }

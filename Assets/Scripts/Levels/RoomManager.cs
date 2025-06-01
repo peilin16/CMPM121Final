@@ -34,7 +34,7 @@ public class RoomManager : MonoBehaviour
         TextAsset jsonText = Resources.Load<TextAsset>(level);
         if (jsonText == null)
         {
-            Debug.LogError("rooms.json not found in Resources folder.");
+            Debug.LogError("{level}.json not found in Resources folder.");
             return;
         }
 
@@ -110,7 +110,7 @@ public class RoomManager : MonoBehaviour
             Debug.Log($"Entered Room: {currentRoom.name}");
         }
     }
-
+    //不推荐使用 请改用level class内部的GetRoomFromPosition
     public Room GetRoomFromPosition(Vector3 pos)
     {
         foreach (var room in roomDict.Values)

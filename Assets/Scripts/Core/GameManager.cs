@@ -21,7 +21,6 @@ public class GameManager
     public Difficultly level = Difficultly.Easy;
     public int currentWave = 1;
     public int maxWaves = 0;
-    public int currentLevel = 1;
     public int countdown;
     private static GameManager theInstance;
     public static GameManager Instance {  get
@@ -32,6 +31,7 @@ public class GameManager
                 theInstance.relicManager = new RelicManager();
                 theInstance.enemyCharacterManager = new EnemyCharacterManager();
                 
+
                 theInstance.enemyManager = new EnemyManager();
                 //theInstance.roomManager = new RoomManager();
                 theInstance.levelManager = new LevelManager();
@@ -71,4 +71,11 @@ public class GameManager
         CoroutineManager.Instance.StopGroup("EnemySpawn");
         //player.player.hp.hp = 1;
     }
+
+    public void StartGame()
+    {
+        GameManager.Instance.state = GameManager.GameState.EXPEDITION;
+        GameManager.Instance.player.GetComponent<PlayerController>().StartLevel();
+    }
+
 }

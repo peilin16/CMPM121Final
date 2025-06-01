@@ -3,41 +3,55 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     public PlayerController player;
+    public EnemySpawner enemySpawner;
+    public GameObject gate; // 拖进来的大门对象
+
+
     private Room lastRoom;
-    public GameObject gate; // 拖进去
+    private Room currentRoom;
+
+    private Level currentLevel;
+    
+
+
 
     void Start()
     {
-        lastRoom = GameManager.Instance.roomManager.GetRoomFromPosition(player.transform.position);
+        currentLevel = GameManager.Instance.levelManager.GetLevel();
+
+        lastRoom = currentLevel.GetRoomFromPosition(player.transform.position);
         if (lastRoom != null)
             CloseRoomGates(lastRoom);
     }
+
     void Update()
     {
-        Room currentRoom = GameManager.Instance.roomManager.GetRoomFromPosition(player.transform.position);
 
-        if (currentRoom != null && currentRoom != lastRoom)
-        {
-            lastRoom = currentRoom;
-            CloseRoomGates(currentRoom);
+        Room room = currentLevel.GetRoomFromPosition(player.transform.position);
+
+        if (room != null && GameManager.Instance.state == GameManager.GameState.EXPEDITION) {
+            if(!room.isExplored)
+            {
+                currentRoom = room;
+                currentRoom.isActive = true;
+                GameManager.Instance.state = GameManager.GameState.INWAVE;
+                CloseRoomGates(currentRoom);
+
+            }
+
+
         }
+
+
+
+
+
+
     }
 
     void CloseRoomGates(Room room)
     {
-        GameObject roomGO = GameObject.Find(room.name);
-        if (roomGO == null)
-        {
-            Debug.LogWarning($"Room GameObject '{room.name}' not found in scene.");
-            return;
-        }
-
-        gate.SetActive(true); // 激活大门
-
+        gate.SetActive(true); // 激活大门对象
         Debug.Log($"Gates closed for room: {room.name}");
     }
-
-
-
-
 }
