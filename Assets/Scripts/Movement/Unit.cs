@@ -1,48 +1,56 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
 public class Unit : MonoBehaviour
 {
-    
     public Vector2 movement;
     public float distance;
-    public event Action<float> OnMove;
+    public event System.Action<float> OnMove;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    Rigidbody2D rb;
+    BoxCollider2D col;
+
+    void Awake()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        Move(new Vector2(movement.x, 0) * Time.fixedDeltaTime);
-        Move(new Vector2(0, movement.y) * Time.fixedDeltaTime);
-        distance += movement.magnitude*Time.fixedDeltaTime;
-        if (distance > 0.5f)
+        Vector2 ds = movement * Time.fixedDeltaTime;
+
+        if (ds != Vector2.zero)
         {
-            OnMove?.Invoke(distance);
-            distance = 0;
+            if (!IsBlocked(ds))
+            {
+                rb.MovePosition(rb.position + ds);
+
+                distance += ds.magnitude;
+                if (distance > 0.5f)
+                {
+                    OnMove?.Invoke(distance);
+                    distance = 0;
+                }
+            }
         }
     }
 
-    public void Move(Vector2 ds)
+    bool IsBlocked(Vector2 moveDelta)
     {
-        List<RaycastHit2D> hits = new List<RaycastHit2D>();
-
-        ContactFilter2D filter = new ContactFilter2D();
-        filter.useTriggers = true;
-        filter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
-        filter.useLayerMask = true;
-
-        int n = GetComponent<Rigidbody2D>().Cast(ds, filter, hits, ds.magnitude * 2);
-        if (n == 0)
+        ContactFilter2D filter = new ContactFilter2D
         {
-            transform.Translate(ds);
-        }
+            useLayerMask = true,
+            useTriggers = false
+        };
+
+        // Ö»¼ì²â Wall ²ã
+        filter.SetLayerMask(LayerMask.GetMask("Wall"));
+
+        RaycastHit2D[] results = new RaycastHit2D[1];
+        int count = col.Cast(moveDelta.normalized, filter, results, moveDelta.magnitude);
+
+        return count > 0;
     }
-
-
 }

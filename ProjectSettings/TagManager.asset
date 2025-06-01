@@ -8,15 +8,18 @@ TagManager:
   - Room
   - Teasure
   - Portal
+  - projectile
+  - Map
+  - Wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Room
   - Water
   - UI
-  - 
-  - 
+  - Wall
+  - Player
   - 
   - 
   - 

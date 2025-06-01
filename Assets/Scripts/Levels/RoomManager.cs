@@ -28,7 +28,7 @@ public class RoomManager : MonoBehaviour
         //this.LoadJson("level1_rooms");
     }
 
-
+    //主要它只会加载当前level的room如果需要加载其他level请先清空room的list
     public void LoadJson(string level)
     {
         TextAsset jsonText = Resources.Load<TextAsset>(level);
