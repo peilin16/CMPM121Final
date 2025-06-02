@@ -65,6 +65,10 @@ public class GameManager
     public RelicManager relicManager;
     //reward 相关
     //public RewardManager rewardManager;
+
+
+
+
     //其他
     public int defectCount;
     public float waveSpendTime = 0f;
