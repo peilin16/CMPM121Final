@@ -30,8 +30,8 @@ public class GameManager
                 theInstance = new GameManager();
                 theInstance.relicManager = new RelicManager();
                 theInstance.enemyCharacterManager = new EnemyCharacterManager();
-                
 
+                theInstance.spellBuilder = new SpellBuilder();
                 theInstance.enemyManager = new EnemyManager();
                 //theInstance.roomManager = new RoomManager();
                 theInstance.levelManager = new LevelManager();
@@ -52,6 +52,7 @@ public class GameManager
     //spell 相关
     public ProjectileManager projectileManager;
     public SpellIconManager spellIconManager;
+    public SpellBuilder spellBuilder;
     //enemy相关
     public EnemySpriteManager enemySpriteManager;
     public EnemyCharacterManager enemyCharacterManager;
@@ -62,8 +63,9 @@ public class GameManager
     //relic相关
     public RelicIconManager relicIconManager;
     public RelicManager relicManager;
-
-
+    //reward 相关
+    //public RewardManager rewardManager;
+    //其他
     public int defectCount;
     public float waveSpendTime = 0f;
     public bool isTiming = false;

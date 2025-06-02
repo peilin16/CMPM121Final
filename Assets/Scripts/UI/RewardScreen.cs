@@ -37,7 +37,7 @@ public class RewardScreen : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            Spell spell = playerController.player.spellcaster.builder.MakeRandomSpell(playerController.player.spellcaster);
+            Spell spell = GameManager.Instance.spellBuilder.MakeRandomSpell(playerController.player.spellcaster);
             generatedSpells.Add(spell);
             spellUIs[i].GetComponent<SpellUI>().SetSpell(spell);
 

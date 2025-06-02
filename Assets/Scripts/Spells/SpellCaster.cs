@@ -35,7 +35,7 @@ public class SpellCaster
     }
     public int mana_reg;
     public Hittable.Team team;
-    public SpellBuilder builder = new SpellBuilder();
+    public SpellBuilder builder = GameManager.Instance.spellBuilder;
     public List<Spell> spells;
 
     public PlayerController playerController;
