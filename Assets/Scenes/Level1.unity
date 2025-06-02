@@ -21481,6 +21481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 837335579}
+  enemySpawner: {fileID: 1425900780}
   gate: {fileID: 590752700}
 --- !u!1 &736772093
 GameObject:
@@ -21883,7 +21884,7 @@ GameObject:
   - component: {fileID: 788251589}
   - component: {fileID: 788251590}
   - component: {fileID: 788251588}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: manabar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22168,7 +22169,7 @@ GameObject:
   - component: {fileID: 837335577}
   - component: {fileID: 837335576}
   - component: {fileID: 837335575}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: player
   m_TagString: unit
   m_Icon: {fileID: 0}
@@ -23951,7 +23952,7 @@ GameObject:
   - component: {fileID: 1021593397}
   - component: {fileID: 1021593396}
   - component: {fileID: 1021593395}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Playertilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24864,7 +24865,7 @@ GameObject:
   - component: {fileID: 1156900261}
   - component: {fileID: 1156900262}
   - component: {fileID: 1156900260}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26310,7 +26311,7 @@ GameObject:
   - component: {fileID: 1313540002}
   - component: {fileID: 1313540001}
   - component: {fileID: 1313540000}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -27242,9 +27243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97135967223141f45bae983aa311bca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
   enemy: {fileID: 1832418719708313566, guid: bebfa21247182184d92ab200b93e6cf0, type: 3}
-  SpawnPoints: []
 --- !u!1 &1441266636
 GameObject:
   m_ObjectHideFlags: 0
@@ -27983,7 +27982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1513612290}
   - component: {fileID: 1513612289}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: fg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28985,7 +28984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1598734334}
   - component: {fileID: 1598734333}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: fg
   m_TagString: Untagged
   m_Icon: {fileID: 0}

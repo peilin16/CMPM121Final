@@ -14,7 +14,7 @@ public class HealthBar : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+   /* void Update()
     {
         if (hp == null) return;
         float perc = hp.hp * 1.0f / hp.max_hp;
@@ -24,7 +24,7 @@ public class HealthBar : MonoBehaviour
             slider.transform.localPosition = new Vector3(-(1 - perc) / 2, 0, 0);
             old_perc = perc;
         }
-    }
+    }*/
 
     public void SetHealth(Hittable hp)
     {

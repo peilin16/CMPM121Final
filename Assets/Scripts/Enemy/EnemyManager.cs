@@ -52,19 +52,7 @@ public class EnemyManager
     }
 
 
-    //敌人部署方法
-    public void SpawnEnemy(EnemyCharacter character, Vector3 pos)
-    {
 
-        GameObject enemyObj = Instantiate(enemy, pos, Quaternion.identity);
-        enemyObj.GetComponent<SpriteRenderer>().sprite =
-            GameManager.Instance.enemySpriteManager.Get(character.enemySprite.spriteIndex);
-        EnemyController controller = enemyObj.GetComponent<EnemyController>();
-        controller.character = character; // assign the character first
-        controller.character.gameObject = enemyObj; //set gameObject
-        controller.character.StartWave();
-        GameManager.Instance.enemyManager.AddEnemy(enemyObj);
-    }
 
 
 

@@ -14,23 +14,14 @@ public class EnemySpawner : MonoBehaviour
 
     private Room currentRoom;
     private int currentWave;
-    
+    public GameObject enemy;
 
 
     void Start()
     {
-        /*CreateButton("Easy", 40);
-        CreateButton("Medium", 0);
-        CreateButton("Endless", -40);*/
+
     }
 
-    void CreateButton(string label, float yOffset)
-    {
-       // GameObject btn = Instantiate(button, level_selector.transform);
-        /*btn.transform.localPosition = new Vector3(0, yOffset);
-        btn.GetComponent<MenuSelectorController>().spawner = this;
-        btn.GetComponent<MenuSelectorController>().SetLevel(label);*/
-    }
 
     public void StartWave(Room room)
     {
@@ -54,7 +45,10 @@ public class EnemySpawner : MonoBehaviour
                 Debug.Log("All waves complete.");
         }*/
     }
+    public void WaveEnd()
+    {
 
+    }
     IEnumerator SpawnWave(Room room)
     {
         GameManager.Instance.state = GameManager.GameState.INWAVE;
@@ -79,33 +73,32 @@ public class EnemySpawner : MonoBehaviour
             );
 
             enemyChar.StartWave(); // 初始化血量等
-            GameManager.Instance.enemyManager.SpawnEnemy(enemyChar, spawnPos); // 你已有的函数
+            this.SpawnEnemy(enemyChar, spawnPos); 
         }
 
         // 等待所有敌人死亡
         yield return new WaitWhile(() => GameManager.Instance.enemyManager.enemy_count > 0);
 
-        if (GameManager.Instance.state != GameManager.GameState.GAMEOVER)
-            GameManager.Instance.state = GameManager.GameState.WAVEEND;
+        /*if (GameManager.Instance.state != GameManager.GameState.GAMEOVER)
+            GameManager.Instance.state = GameManager.GameState.WAVEEND;*/
     }
 
-    /*
+    
     //spawn enemy
-    void SpawnEnemy(EnemyCharacter character, string location)
+    void SpawnEnemy(EnemyCharacter character, Vector3 pos)
     {
-        Vector3 pos = PickSpawnPoint(location);
         GameObject enemyObj = Instantiate(enemy, pos, Quaternion.identity);
         
         enemyObj.GetComponent<SpriteRenderer>().sprite =
             GameManager.Instance.enemySpriteManager.Get(character.enemySprite.spriteIndex);
         
         EnemyController controller = enemyObj.GetComponent<EnemyController>();
-        controller.character = character; // assign the character first
+        controller.Init(character);//初始化敌人 由于没有构造方法请使用init初始化
         controller.character.gameObject = enemyObj; //set gameObject
         controller.character.StartWave();
         GameManager.Instance.enemyManager.AddEnemy(enemyObj);
     }
-
+    /*
     Vector3 PickSpawnPoint(string location)
     {
         

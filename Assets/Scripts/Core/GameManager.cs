@@ -45,17 +45,21 @@ public class GameManager
     {
         return _nextID++;
     }
-    public GameObject player;
+
     //Level 相关
     public LevelManager levelManager;
     public RoomManager roomManager;
+    //spell 相关
     public ProjectileManager projectileManager;
     public SpellIconManager spellIconManager;
+    //enemy相关
     public EnemySpriteManager enemySpriteManager;
     public EnemyCharacterManager enemyCharacterManager;
     public EnemyManager enemyManager;
-
+    //player相关
+    public GameObject player;
     public PlayerSpriteManager playerSpriteManager;
+    //relic相关
     public RelicIconManager relicIconManager;
     public RelicManager relicManager;
 

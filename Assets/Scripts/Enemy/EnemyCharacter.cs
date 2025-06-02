@@ -42,10 +42,16 @@ public class EnemyCharacter : Character
         this.StartWave();
     }
     public override void StartWave() {
-        if (this.hp == null)
-            this.hp = new Hittable(this._final_healthly, Hittable.Team.MONSTERS, gameObject);
+        //if (this.hp == null)
+        this.hp = new Hittable(this._final_healthly, Hittable.Team.MONSTERS, gameObject);
 
     }
+
+
+
+
+
+
     protected override void JsonLoad(JObject obj)
     {
         //not use

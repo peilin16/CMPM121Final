@@ -36,7 +36,7 @@ public class LevelController : MonoBehaviour
                 currentRoom.isActive = true;
                 GameManager.Instance.state = GameManager.GameState.INWAVE;
                 CloseRoomGates(currentRoom);
-
+                enemySpawner.StartWave(currentRoom);
             }
 
 
