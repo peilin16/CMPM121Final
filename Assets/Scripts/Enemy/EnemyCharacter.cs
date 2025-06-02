@@ -48,17 +48,34 @@ public class EnemyCharacter : Character
     }
 
 
+    //当前默认向玩家移动的逻辑
+    public virtual void Behavoir()
+    {
+        if (GameManager.Instance == null || GameManager.Instance.player == null) return;
 
+        Vector3 direction = GameManager.Instance.player.transform.position - gameObject.transform.position;
+        float distance = direction.magnitude;
 
-
+        if (distance < 2f)
+        {
+            // 简单近战攻击逻辑
+            EnemyController ctrl = gameObject.GetComponent<EnemyController>();
+            if (ctrl.last_attack + 2f < Time.time)
+            {
+                ctrl.last_attack = Time.time;
+                GameManager.Instance.playerController.player.hp.Damage(new Damage(5, Damage.Type.PHYSICAL));
+            }
+        }
+        else
+        {
+            gameObject.GetComponent<Unit>().movement = direction.normalized * final_speed;
+        }
+    }
 
     protected override void JsonLoad(JObject obj)
     {
         //not use
     }
 
-    public void UpdateLevel(int wave)
-    {
-        // Placeholder for logic that modifies stats based on wave
-    }
+
 }

@@ -61,7 +61,8 @@ public class EnemyController : MonoBehaviour, Controller
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = target.position - transform.position;
+        characterData.Behavoir(); // 委托行为逻辑给 character
+        /*Vector3 direction = target.position - transform.position;
         if (direction.magnitude < 2f)
         {
             DoAttack();
@@ -69,8 +70,14 @@ public class EnemyController : MonoBehaviour, Controller
         else
         {
             GetComponent<Unit>().movement = direction.normalized * characterData.final_speed;
-        }
+        }*/
     }
+
+
+
+
+
+
     void StartLevel()
     {
         characterData.StartLevel();

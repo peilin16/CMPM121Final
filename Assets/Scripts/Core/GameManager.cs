@@ -9,7 +9,7 @@ public class GameManager
     {
         PREGAME,//游戏开始的状态
         INWAVE, //玩家在房间内受到攻击的状态
-        WAVEEND,//final 不再使用 waveEnd 状态
+        WAVEEND,//
 
         EXPEDITION,//当玩家自由探索地图时的状态
         COUNTDOWN,
@@ -59,6 +59,7 @@ public class GameManager
     public EnemyManager enemyManager;
     //player相关
     public GameObject player;
+    public PlayerController playerController;
     public PlayerSpriteManager playerSpriteManager;
     //relic相关
     public RelicIconManager relicIconManager;

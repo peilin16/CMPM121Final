@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour ,Controller
         unit = GetComponent<Unit>();
 
         GameManager.Instance.player = this.gameObject;
+        GameManager.Instance.playerController = this;
         EventBus.Instance.OnPlayerDeath += HandlePlayerDeath;
 
     }
