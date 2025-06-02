@@ -26,32 +26,38 @@ public class LevelController : MonoBehaviour
 
     void Update()
     {
+        
+        currentRoom = currentLevel.GetRoomFromPosition(player.transform.position);
 
-        Room room = currentLevel.GetRoomFromPosition(player.transform.position);
-
-        if (room != null && GameManager.Instance.state == GameManager.GameState.EXPEDITION) {
-            if(!room.isExplored)
+        if (currentRoom != null && GameManager.Instance.state == GameManager.GameState.EXPEDITION) {
+            if( !currentRoom.isActive && !currentRoom.isCleared)
             {
-                currentRoom = room;
                 currentRoom.isActive = true;
                 GameManager.Instance.state = GameManager.GameState.INWAVE;
                 CloseRoomGates(currentRoom);
                 enemySpawner.StartWave(currentRoom);
             }
-
-
+            
         }
-
-
-
-
-
+        else if(currentRoom != null && GameManager.Instance.state == GameManager.GameState.WAVEEND)
+        {
+            GameManager.Instance.state = GameManager.GameState.EXPEDITION;
+            currentRoom.isActive = false;
+            OpenRoomGates(currentRoom);
+            //currentRoom = null;
+        }
+        
 
     }
 
-    void CloseRoomGates(Room room)
+    private void CloseRoomGates(Room room)
     {
         gate.SetActive(true); // 激活大门对象
+        Debug.Log($"Gates closed for room: {room.name}");
+    }
+    private void OpenRoomGates(Room room)
+    {
+        gate.SetActive(false); // 关闭大门对象
         Debug.Log($"Gates closed for room: {room.name}");
     }
 }

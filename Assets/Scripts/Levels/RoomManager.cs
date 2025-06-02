@@ -101,14 +101,14 @@ public class RoomManager : MonoBehaviour
 
     void Update()
     {
-        Vector3 pos = player.position;
+        /*Vector3 pos = player.position;
         Room room = GetRoomFromPosition(pos);
         if (room != null && currentRoom != room)
         {
             currentRoom = room;
-            currentRoom.isExplored = true;
+            //currentRoom.isCleared = true;
             Debug.Log($"Entered Room: {currentRoom.name}");
-        }
+        }*/
     }
     //不推荐使用 请改用level class内部的GetRoomFromPosition
     public Room GetRoomFromPosition(Vector3 pos)

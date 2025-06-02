@@ -20,8 +20,11 @@ public class LevelManager
     public Level GetLevel()
     {
         string levelName = $"level{currentLevel}";
+
         if (levels.Count == 0)
             LoadLevels(currentLevel);
+
+
         if (levels.TryGetValue(levelName, out Level level))
             return level;
 
