@@ -9,6 +9,8 @@ public class EnemyCharacter : Character
 {
     public EnemySprite enemySprite;
     private int _final_healthly;
+    protected EnemyMovement movement;
+    
     public int final_healthly
     {
         get => this._final_healthly;
@@ -37,7 +39,7 @@ public class EnemyCharacter : Character
         this._final_healthly = sprite.healthly;
         this.final_speed = sprite.speed;
         this.final_damage = sprite.damage;
-        
+        movement = new EnemyMovement(this);
     }
     
     public override void StartLevel() {
@@ -54,16 +56,19 @@ public class EnemyCharacter : Character
     //当前默认向玩家移动的逻辑
     public virtual void Behavior(GameObject gameObject)
     {
+<<<<<<< Updated upstream
 
         Debug.Log("test"); 
         /*if (GameManager.Instance == null || GameManager.Instance.player == null) return;
 
         Vector3 direction = GameManager.Instance.player.transform.position - gameObject.transform.position;
         float distance = direction.magnitude;
+=======
+        float distance = Vector3.Distance(gameObject.transform.position, GameManager.Instance.player.transform.position);
+>>>>>>> Stashed changes
 
         if (distance < 2f)
         {
-            // 简单近战攻击逻辑
             EnemyController ctrl = gameObject.GetComponent<EnemyController>();
             if (ctrl.last_attack + 2f < Time.time)
             {
@@ -73,6 +78,7 @@ public class EnemyCharacter : Character
         }
         else
         {
+<<<<<<< Updated upstream
             gameObject.GetComponent<Unit>().movement = direction.normalized * final_speed;
         }*/
         //请根据自己的需求更改behavoir方法
@@ -86,6 +92,17 @@ public class EnemyCharacter : Character
             final_speed = this.final_speed
         };
     }
+=======
+            movement?.MoveTowardsPlayer();
+        }
+    }
+    protected virtual void Attack()
+    {
+
+
+
+    }
+>>>>>>> Stashed changes
     protected override void JsonLoad(JObject obj)
     {
         //not use

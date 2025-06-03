@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ZombieCharacter : EnemyCharacter
 {
+<<<<<<< Updated upstream
     public ZombieCharacter(EnemySprite sprite, string typ) : base(sprite, typ) { }
 
 
@@ -46,3 +47,19 @@ public class ZombieCharacter : EnemyCharacter
         }
     }
 }
+=======
+
+
+
+    public override void StartLevel()
+    {
+        this.StartWave();
+    }
+    public override void StartWave()
+    {
+        //if (this.hp == null)
+        //this.hp = new Hittable(this._final_healthly, Hittable.Team.MONSTERS, gameObject);
+
+    }
+}
+>>>>>>> Stashed changes
