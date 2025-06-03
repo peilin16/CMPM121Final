@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour ,Controller
     public Unit unit;
     public GameObject restartUI;
     private Vector3 lastPosition;
-    private float localStandStillTime; // ¸ÄÎª±¾µØ±äÁ¿
+    private float localStandStillTime; // æ”¹ä¸ºæœ¬åœ°å˜é‡
     public List<Relic> carriedRelic = new List<Relic>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour ,Controller
             relic.Update(this); // Pass PlayerController to relic
         }
         //Stop checking
-        //Íæ¼Ò¾²Ö¹¼ì²é
+        //ç©å®¶é™æ­¢æ£€æŸ¥
         if ((transform.position - lastPosition).sqrMagnitude < 0.001f)
         {
             localStandStillTime += Time.deltaTime;

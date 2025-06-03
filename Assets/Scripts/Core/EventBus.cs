@@ -3,7 +3,7 @@ using System;
 
 public class EventBus 
 {
-    //ËùÓĞ»Øµ÷¶¼Ó¦Ğ´ÔÚeventbusÀï
+    //ï¿½ï¿½ï¿½Ğ»Øµï¿½ï¿½ï¿½Ó¦Ğ´ï¿½ï¿½eventbusï¿½ï¿½
     private static EventBus theInstance;
     public static EventBus Instance
     {
@@ -16,33 +16,33 @@ public class EventBus
     }
 
     //player event
-    public Action<Damage> OnPlayerDamaged;//Íæ¼ÒÊÜÉËÊÂ¼ş
-    public Action<GameObject> OnPlayerDeath;//Íæ¼ÒËÀÍöÊÂ¼ş
-    public Action<PlayerController> PlayerCast; //·¨Êõ·¢ÉäÊÂ¼ş
+    public Action<Damage> OnPlayerDamaged;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+    public Action<GameObject> OnPlayerDeath;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+    public Action<PlayerController> PlayerCast; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
 
     // monster event
-    public  Action<Damage, GameObject> OnMonsterDamaged; //µĞÈËÊÜÉËÊÂ¼ş
-    public  Action<GameObject> OnMonsterDeath; // µĞÈËËÀÍöÊÂ¼ş
-    public Action<Controller> SpellHitEnemy; //·¨Êõ»÷ÖĞµĞÈËµÄÊÂ¼ş
-    // ĞŞ¸Ä OnPlayerStandStill ¶¨Òå£¨ÒÆ³ı PlayerController ²ÎÊı£©
-    public Action OnPlayerStandStill;  // Íæ¼Ò¾²Ö¹ÊÂ¼ş
+    public  Action<Damage, GameObject> OnMonsterDamaged; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+    public  Action<GameObject> OnMonsterDeath; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
+    public Action<Controller> SpellHitEnemy; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½Ëµï¿½ï¿½Â¼ï¿½
+    // ï¿½Ş¸ï¿½ OnPlayerStandStill ï¿½ï¿½ï¿½å£¨ï¿½Æ³ï¿½ PlayerController ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public Action OnPlayerStandStill;  // ï¿½ï¿½Ò¾ï¿½Ö¹ï¿½Â¼ï¿½
 
-    // Ìí¼Ó¾²Ö¹Ê±¼ä×Ö¶Î£¨Èç¹û±ØĞë±£Áô£©
+    // ï¿½ï¿½ï¿½Ó¾ï¿½Ö¹Ê±ï¿½ï¿½ï¿½Ö¶Î£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë±£ï¿½ï¿½ï¿½ï¿½
     public float standStillTime { get; private set; }
 
     public void TriggerPlayerCast(PlayerController pc) => PlayerCast?.Invoke(pc);
     
     
-    //·¨ÊõÅö×²ÊÂ¼ş
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½Â¼ï¿½
     // spell collison 
     public Action<Controller> SpellCollision;
-    public Action<Controller> SpellCollideToWall;//·¨Êõ×²Ç½ÊÂ¼ş
+    public Action<Controller> SpellCollideToWall;//ï¿½ï¿½ï¿½ï¿½×²Ç½ï¿½Â¼ï¿½
 
-    // Ìí¼Ó´¥·¢·½·¨
+    // ï¿½ï¿½ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void TriggerStandStill()
     {
         OnPlayerStandStill?.Invoke();
-        standStillTime = 0f; // ´¥·¢ºóÖØÖÃ¼ÆÊ±
+        standStillTime = 0f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½Ê±
     }
 
     public void TriggerSpellHitEnemy(Controller c)
@@ -58,14 +58,14 @@ public class EventBus
         SpellCollideToWall?.Invoke(c);
     }
 
-    // Í¨ÓÃÎïÀíÉËº¦ÊÂ¼ş£¨±£ÁôÔ­Ê¼Éè¼Æ£©
+    // Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­Ê¼ï¿½ï¿½Æ£ï¿½
     public event Action<Vector3, Damage, Hittable> OnPhysicalDamage;
 
     public void TriggerPhysicalDamage(Vector3 position, Damage damage, Hittable target)
     {
         OnPhysicalDamage?.Invoke(position, damage, target);
     }
-    // ÔÚ EventBus ÀàÖĞÌí¼Ó
+    // ï¿½ï¿½ EventBus ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void TriggerPlayerDamaged(Damage damage)
     {
         OnPlayerDamaged?.Invoke(damage);

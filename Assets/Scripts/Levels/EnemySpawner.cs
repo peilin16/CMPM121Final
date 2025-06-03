@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-    //¿ªÊ¼²¨´Î
+    //å¼€å§‹æ³¢æ¬¡
     public void StartWave(Room room)
     {
         currentRoom = room;
@@ -30,28 +30,28 @@ public class EnemySpawner : MonoBehaviour
 
         CoroutineManager.Instance.StartManagedCoroutine("EnemySpawn", "wave " + GameManager.Instance.currentWave, SpawnWave(room));
     }
-    //ÏÂÒ»²¨
+    //ä¸‹ä¸€æ³¢
     private void NextWave(Room room)
     {
         GameManager.Instance.currentWave++;
 
-        // Èç¹û»¹ÓĞÏÂÒ»²¨
+        // å¦‚æœè¿˜æœ‰ä¸‹ä¸€æ³¢
         if (GameManager.Instance.currentWave <= room.waves.Count)
         {
             CoroutineManager.Instance.StartManagedCoroutine("EnemySpawn", "wave " + GameManager.Instance.currentWave, SpawnWave(room));
         }
         else
         {
-            // ËùÓĞ²¨´ÎÍê³É
+            // æ‰€æœ‰æ³¢æ¬¡å®Œæˆ
             WaveEnd();
         }
     }
-    //ËùÓĞ²¨´Î½áÊø
+    //æ‰€æœ‰æ³¢æ¬¡ç»“æŸ
     private void WaveEnd()
     {
         GameManager.Instance.state = GameManager.GameState.WAVEEND;
 
-        // ±ê¼Çµ±Ç°·¿¼äÍê³É
+        // æ ‡è®°å½“å‰æˆ¿é—´å®Œæˆ
         if (currentRoom != null)
         {
             currentRoom.isCleared = true;
@@ -59,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
         }
             
 
-        // ´ò¿ªÃÅ»ò½øĞĞÆäËû´¦Àí
+        // æ‰“å¼€é—¨æˆ–è¿›è¡Œå…¶ä»–å¤„ç†
         /*LevelController levelController = FindObjectOfType<LevelController>();
         if (levelController != null)
         {
@@ -68,7 +68,7 @@ public class EnemySpawner : MonoBehaviour
 
         Debug.Log($"Room {currentRoom.name} cleared.");
     }
-    //µĞÈË²¿ÊğµÄĞ­³Ì
+    //æ•Œäººéƒ¨ç½²çš„åç¨‹
     IEnumerator SpawnWave(Room room)
     {
         GameManager.Instance.state = GameManager.GameState.INWAVE;
@@ -89,7 +89,7 @@ public class EnemySpawner : MonoBehaviour
             this.SpawnEnemy(enemyChar, spawnPos);
         }
 
-        // µÈ´ıËùÓĞµĞÈËËÀÍö
+        // ç­‰å¾…æ‰€æœ‰æ•Œäººæ­»äº¡
         yield return new WaitWhile(() => GameManager.Instance.enemyManager.enemy_count > 0);
 
         if (GameManager.Instance.state != GameManager.GameState.GAMEOVER)
@@ -99,7 +99,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     
-    //spawn enemy ·½·¨
+    //spawn enemy æ–¹æ³•
     private void SpawnEnemy(EnemyCharacter character, Vector3 pos)
     {
         GameObject enemyObj = Instantiate(enemy, pos, Quaternion.identity);
@@ -107,12 +107,12 @@ public class EnemySpawner : MonoBehaviour
         enemyObj.GetComponent<SpriteRenderer>().sprite = GameManager.Instance.enemySpriteManager.Get(character.enemySprite.spriteIndex);
         
         EnemyController controller = enemyObj.GetComponent<EnemyController>();
-        controller.Init(character);//³õÊ¼»¯µĞÈË ÓÉÓÚÃ»ÓĞ¹¹Ôì·½·¨ÇëÊ¹ÓÃinit³õÊ¼»¯
+        controller.Init(character);//åˆå§‹åŒ–æ•Œäºº ç”±äºæ²¡æœ‰æ„é€ æ–¹æ³•è¯·ä½¿ç”¨initåˆå§‹åŒ–
         controller.character.gameObject = enemyObj; //set gameObject
         controller.character.StartWave();
         GameManager.Instance.enemyManager.AddEnemy(enemyObj);
     }
-    //»ñÈ¡²¿ÊğÎ»ÖÃ
+    //è·å–éƒ¨ç½²ä½ç½®
     private Vector3 GetRandomPos(Room room)
     {
         int maxTries = 20;
@@ -133,7 +133,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        // Èç¹û³¢ÊÔ¶à´ÎºóÈÔÈ»Ê§°Ü£¬¾Í·µ»Ø×îºóÒ»´ÎµÄÎ»ÖÃ£¨¿ÉÄÜÀëÍæ¼Ò½Ï½ü£©
+        // å¦‚æœå°è¯•å¤šæ¬¡åä»ç„¶å¤±è´¥ï¼Œå°±è¿”å›æœ€åä¸€æ¬¡çš„ä½ç½®ï¼ˆå¯èƒ½ç¦»ç©å®¶è¾ƒè¿‘ï¼‰
         return new Vector3(
             Random.Range(room.bounds.min.x + 0.5f, room.bounds.max.x - 0.5f),
             Random.Range(room.bounds.min.y + 0.5f, room.bounds.max.y - 0.5f),
