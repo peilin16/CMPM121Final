@@ -109,7 +109,6 @@ public class EnemySpawner : MonoBehaviour
         EnemyController controller = enemyObj.GetComponent<EnemyController>();
         controller.Init(character);//初始化敌人 由于没有构造方法请使用init初始化
         controller.character.gameObject = enemyObj; //set gameObject
-        controller.character.StartWave();
         GameManager.Instance.enemyManager.AddEnemy(enemyObj);
     }
     //获取部署位置

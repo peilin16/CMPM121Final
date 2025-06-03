@@ -10,18 +10,19 @@ public class Character
     public int iconIndex;
     public GameObject gameObject;
     public float health;
+    //protected Controller controller;
     //level start
     public virtual void StartLevel()
     {
-        this.StartWave();
+        //this.StartWave();
     }
     
     protected virtual void JsonLoad(JObject obj)
     {
     }
-    //wave start
-    public virtual void StartWave()
+    //Init controller start
+    /*public virtual void InitController(Controller c)
     {
-
-    }
+        controller = c;
+    }*/
 }

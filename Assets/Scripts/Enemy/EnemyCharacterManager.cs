@@ -44,9 +44,19 @@ public class EnemyCharacterManager
                 Debug.LogWarning($"Unknown enemy type: {name}");
                 continue;
             }*/
-
             EnemySprite sprite = new EnemySprite(name, spriteIndex, hp, speed, damage);
-            EnemyCharacter character = new EnemyCharacter(sprite, name);
+            EnemyCharacter character = null; 
+            switch (name)
+            {
+                case "zombie":
+                    character = new ZombieCharacter(sprite, name); 
+                    break;
+                default:
+                    character = new EnemyCharacter(sprite, name);
+                    break;
+
+            }
+            
             enemyDB[name] = character;
         }
     }

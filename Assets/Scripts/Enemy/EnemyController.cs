@@ -1,5 +1,8 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
+
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyController : MonoBehaviour, Controller
 {
 
@@ -12,6 +15,11 @@ public class EnemyController : MonoBehaviour, Controller
 
     public EnemyCharacter characterData;  // Implements Controller.character
     public float last_attack;
+
+
+
+
+
 
     public Character character
     {
@@ -36,16 +44,31 @@ public class EnemyController : MonoBehaviour, Controller
         get => _id;
         private set => _id = value;
     }
+
+
+    //移动逻辑在这
+    protected EnemyMovement movement;
+    private Transform playerTransform;
+    private Tilemap wallTilemap;
+
+
+
+
     //public EnemyCharacter enemy;
     // 初始化逻辑 //初始化敌人 由于没有构造方法请使用init初始化
     public void Init(EnemyCharacter character)
     {
         this.characterData = character;
         characterData.gameObject = this.gameObject;
-        this.characterData.StartWave();
+        this.characterData.InitController(this);
         healthui.SetHealth(characterData.hp);
         // 订阅 OnMonsterDamaged 事件
         EventBus.Instance.OnMonsterDamaged += this.BeHitting;
+        // 获取引用（假设游戏中只有一个玩家）
+        playerTransform = GameObject.FindWithTag("Player").transform;
+        wallTilemap = GameObject.Find("WallTilemap").GetComponent<Tilemap>();
+        // 初始化 Movement
+        movement = new EnemyMovement(this, wallTilemap, LayerMask.GetMask("Wall"));
 
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -61,7 +84,10 @@ public class EnemyController : MonoBehaviour, Controller
     // Update is called once per frame
     void Update()
     {
-        characterData.Behavoir(); // 委托行为逻辑给 character
+        characterData.Behavior(gameObject); // 委托行为逻辑给 character
+        //移动相关逻辑
+        movement.MoveTowards(characterData.destination);
+
         /*Vector3 direction = target.position - transform.position;
         if (direction.magnitude < 2f)
         {
@@ -73,8 +99,11 @@ public class EnemyController : MonoBehaviour, Controller
         }*/
     }
 
-
-
+    /*
+    public EnemyCharacter GetCharacter()
+    {
+        return character;
+    }*/
 
 
 

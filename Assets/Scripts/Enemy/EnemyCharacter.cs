@@ -23,7 +23,9 @@ public class EnemyCharacter : Character
     }
     public float final_speed;
     public float final_damage;
-
+    public Vector3 destination;
+    //引入控制器对象
+    protected EnemyController controller;
     public string type;
 
     public EnemyCharacter() { }
@@ -39,19 +41,20 @@ public class EnemyCharacter : Character
     }
     
     public override void StartLevel() {
-        this.StartWave();
+        
     }
-    public override void StartWave() {
+    public void InitController(EnemyController c)
+    {
         //if (this.hp == null)
         this.hp = new Hittable(this._final_healthly, Hittable.Team.MONSTERS, gameObject);
-
+        this.controller = c;
     }
 
 
     //当前默认向玩家移动的逻辑
-    public virtual void Behavoir()
+    public virtual void Behavior(GameObject gameObject)
     {
-        if (GameManager.Instance == null || GameManager.Instance.player == null) return;
+        /*if (GameManager.Instance == null || GameManager.Instance.player == null) return;
 
         Vector3 direction = GameManager.Instance.player.transform.position - gameObject.transform.position;
         float distance = direction.magnitude;
@@ -69,7 +72,8 @@ public class EnemyCharacter : Character
         else
         {
             gameObject.GetComponent<Unit>().movement = direction.normalized * final_speed;
-        }
+        }*/
+        //请根据自己的需求更改behavoir方法
     }
 
     protected override void JsonLoad(JObject obj)
