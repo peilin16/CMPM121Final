@@ -54,6 +54,8 @@ public class EnemyCharacter : Character
     //当前默认向玩家移动的逻辑
     public virtual void Behavior(GameObject gameObject)
     {
+
+        Debug.Log("test"); 
         /*if (GameManager.Instance == null || GameManager.Instance.player == null) return;
 
         Vector3 direction = GameManager.Instance.player.transform.position - gameObject.transform.position;
@@ -75,7 +77,15 @@ public class EnemyCharacter : Character
         }*/
         //请根据自己的需求更改behavoir方法
     }
-
+    public virtual EnemyCharacter Clone()
+    {
+        return new EnemyCharacter(this.enemySprite, this.type)
+        {
+            final_healthly = this.final_healthly,
+            final_damage = this.final_damage,
+            final_speed = this.final_speed
+        };
+    }
     protected override void JsonLoad(JObject obj)
     {
         //not use

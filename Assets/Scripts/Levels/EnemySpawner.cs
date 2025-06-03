@@ -111,6 +111,13 @@ public class EnemySpawner : MonoBehaviour
         controller.character.gameObject = enemyObj; //set gameObject
         GameManager.Instance.enemyManager.AddEnemy(enemyObj);
     }
+
+
+
+
+
+
+
     //获取部署位置
     private Vector3 GetRandomPos(Room room)
     {

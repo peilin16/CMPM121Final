@@ -31,7 +31,7 @@ public class EnemyMovement
         {
             Vector3 target = currentPath[pathIndex];
             Vector2 dir = (target - enemy.transform.position).normalized;
-            enemy.gameObject.GetComponent<Unit>().movement = dir * enemy.characterData.final_speed;
+            enemy.gameObject.GetComponent<Unit>().movement = dir * enemy.enemy.final_speed;
 
             if (Vector3.Distance(enemy.transform.position, target) < 0.1f)
             {

@@ -14,8 +14,11 @@ public class EnemyCharacterManager
 
     public EnemyCharacter GetEnemy(string type)
     {
-        if (enemyDB.ContainsKey(type))
-            return enemyDB[type];
+        if (enemyDB.TryGetValue(type, out EnemyCharacter enemy))
+        {
+            // 返回原始实例（已经是具体的子类）
+            return enemy;
+        }
         Debug.LogWarning($"Enemy of type {type} not found.");
         return null;
     }
@@ -52,6 +55,15 @@ public class EnemyCharacterManager
                     Debug.Log(name);
                     character = new ZombieCharacter(sprite, name); 
                     break;
+
+                /*case "warlock":
+                    Debug.Log(name);
+                    character = new WarlockCharacter(sprite, name);
+                    break;
+                case "skeleton":
+                    Debug.Log(name);
+                    character = new SkeletonCharacter(sprite, name);
+                    break;*/
                 default:
                     character = new EnemyCharacter(sprite, name);
                     break;

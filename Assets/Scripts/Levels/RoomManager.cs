@@ -69,7 +69,7 @@ public class RoomManager : MonoBehaviour
 
                     for (int i = 0; i < count; i++)
                     {
-                        EnemyCharacter clone = new EnemyCharacter(baseCharacter.enemySprite, baseCharacter.type);
+                        EnemyCharacter clone = baseCharacter.Clone();
 
                         if (enemyObj["hp"] != null)
                             clone.final_healthly = (int)enemyObj["hp"];

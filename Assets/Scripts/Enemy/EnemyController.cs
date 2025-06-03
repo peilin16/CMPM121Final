@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour, Controller
     //public Hittable hp;
     public float speed;
 
-    public EnemyCharacter characterData;  // Implements Controller.character
+    public EnemyCharacter enemy;  // Implements Controller.character
     public float last_attack;
 
 
@@ -23,8 +23,8 @@ public class EnemyController : MonoBehaviour, Controller
 
     public Character character
     {
-        get => characterData;
-        set => characterData = (EnemyCharacter)value;
+        get => enemy;
+       set => enemy = (EnemyCharacter)value;//有遗留问题 直接调用enemy对象 不要用set不然会覆盖掉原有的设置
     }
 
     public HealthBar HealthUI
@@ -58,10 +58,10 @@ public class EnemyController : MonoBehaviour, Controller
     // 初始化逻辑 //初始化敌人 由于没有构造方法请使用init初始化
     public void Init(EnemyCharacter character)
     {
-        this.characterData = character;
-        characterData.gameObject = this.gameObject;
-        this.characterData.InitController(this);
-        healthui.SetHealth(characterData.hp);
+        this.enemy = character;
+        enemy.gameObject = this.gameObject;
+        this.enemy.InitController(this);
+        healthui.SetHealth(enemy.hp);
         // 订阅 OnMonsterDamaged 事件
         EventBus.Instance.OnMonsterDamaged += this.BeHitting;
         // 获取引用（假设游戏中只有一个玩家）
@@ -84,10 +84,10 @@ public class EnemyController : MonoBehaviour, Controller
     // Update is called once per frame
     void Update()
     {
-        characterData.Behavior(gameObject); // 委托行为逻辑给 character
+        enemy.Behavior(gameObject); // 委托行为逻辑给 character
         //移动相关逻辑
-        Debug.Log(characterData.destination);
-        movement.MoveTowards(characterData.destination);
+        Debug.Log(enemy.destination);
+        movement.MoveTowards(enemy.destination);
 
         /*Vector3 direction = target.position - transform.position;
         if (direction.magnitude < 2f)
@@ -110,7 +110,7 @@ public class EnemyController : MonoBehaviour, Controller
 
     void StartLevel()
     {
-        characterData.StartLevel();
+        enemy.StartLevel();
     }
 
     void DoAttack()
@@ -127,20 +127,20 @@ public class EnemyController : MonoBehaviour, Controller
         if (obj == this.gameObject)
         {
             //Debug.Log("bbb");
-            this.healthui.SetHealth(characterData.hp);
+            this.healthui.SetHealth(enemy.hp);
         }
         
     }
     public void Die()
     {
-        if (!dead && this.characterData.hp.hp <= 0)
+        if (!dead && this.enemy.hp.hp <= 0)
         {
             EventBus.Instance.OnMonsterDamaged -= this.BeHitting;
             EventBus.Instance.OnMonsterDeath -= (gameObject) => this.Die();
             dead = true;
             GameManager.Instance.enemyManager.RemoveEnemy(this.gameObject);
             Destroy(this.gameObject);
-            Destroy(this.characterData.gameObject);
+            Destroy(this.enemy.gameObject);
         }
     }
 }

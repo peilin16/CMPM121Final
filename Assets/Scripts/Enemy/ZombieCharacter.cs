@@ -5,6 +5,19 @@ public class ZombieCharacter : EnemyCharacter
 {
     public ZombieCharacter(EnemySprite sprite, string typ) : base(sprite, typ) { }
 
+
+
+
+    public override EnemyCharacter Clone()
+    {
+        return new ZombieCharacter(this.enemySprite, this.type)
+        {
+            final_healthly = this.final_healthly,
+            final_damage = this.final_damage,
+            final_speed = this.final_speed
+
+        };
+    }
     public override void Behavior(GameObject gameObject)
     {
         //if (GameManager.Instance == null || GameManager.Instance.player == null) return;
