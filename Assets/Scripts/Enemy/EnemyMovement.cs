@@ -22,6 +22,7 @@ public class EnemyMovement
     {
         if (currentPath.Count == 0 || pathIndex >= currentPath.Count)
         {
+            //Debug.Log("aaaa");
             currentPath = Pathfinder.FindPath(enemy.transform.position, destination, collisionTilemap, wallMask);
             pathIndex = 0;
         }

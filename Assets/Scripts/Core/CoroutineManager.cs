@@ -38,7 +38,7 @@ public class CoroutineManager : MonoBehaviour
             groupedCoroutines[group].Remove(id);
         }
 
-
+        Debug.Log("group:"+ group+" id:"+ id);
         Coroutine c = StartCoroutine(WrappedCoroutine(group, id, routine));
         groupedCoroutines[group][id] = c; 
         return c;

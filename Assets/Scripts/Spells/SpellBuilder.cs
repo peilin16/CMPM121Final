@@ -18,17 +18,20 @@ public class SpellBuilder
         if (spellDB.Count > 0 && modifierSpellDB.Count > 0)
             return;
 
-        TextAsset jsonText = Resources.Load<TextAsset>("spells");
-        if (jsonText == null)
+        TextAsset baseJson = Resources.Load<TextAsset>("spells");
+        TextAsset modJson = Resources.Load<TextAsset>("modified_spells");
+
+        if (baseJson == null || modJson == null)
         {
-            Debug.LogError("spells.json not found in Resources!");
+            Debug.LogError("Spell JSON files not found in Resources!");
             return;
         }
 
-        JObject root = JObject.Parse(jsonText.text);
+        JObject baseRoot = JObject.Parse(baseJson.text);
+        JObject modRoot = JObject.Parse(modJson.text);
 
-        LoadBaseSpells(root);
-        LoadModifiedSpells(root);
+        LoadBaseSpells(baseRoot);
+        LoadModifiedSpells(modRoot);
     }
     private void LoadBaseSpells(JObject root)
     {
@@ -104,9 +107,9 @@ public class SpellBuilder
                         modifierSpellDB[pair.Key] = new WaverModifier(obj);
                         break;
 
-                    /*default:
+                    default:
                         Debug.LogWarning($"[LoadModifiedSpells] Unknown modifier name: {name}");
-                        break;*/
+                        break;
                 }
             }
             catch
@@ -128,7 +131,7 @@ public class SpellBuilder
 
         float roll = Random.value;
 
-        // 50% chance to return a modifier spell (recursive wrap), 60% to return a base spell
+        // 70% chance to return a modifier spell (recursive wrap), 60% to return a base spell
         if (roll < 0.7f)
         {
             // Get random modifier
@@ -149,6 +152,7 @@ public class SpellBuilder
             List<string> baseKeys = new List<string>(spellDB.Keys);
             string baseKey = baseKeys[Random.Range(0, baseKeys.Count)];
             SpellData baseData = spellDB[baseKey];
+            Debug.Log("baseKey" + baseKey + " |"+baseData);
             return BuildSpell(owner, baseData);
         }
     }
@@ -172,7 +176,7 @@ public class SpellBuilder
                 projectile = new ProjectileData { sprite = "0", trajectory = "straight", base_speed = 8f }
             });
         }
-
+        
         return BuildSpell(owner, spellDB[key]);
     }
     public Spell BuildSpell(SpellCaster owner, SpellData data)

@@ -49,6 +49,7 @@ public class EnemyCharacterManager
             switch (name)
             {
                 case "zombie":
+                    Debug.Log(name);
                     character = new ZombieCharacter(sprite, name); 
                     break;
                 default:

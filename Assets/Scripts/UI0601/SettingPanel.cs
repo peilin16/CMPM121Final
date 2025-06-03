@@ -112,8 +112,7 @@ public class SettingPanel : MonoBehaviour
         generatedSpells.Clear();
         for (int i = 0; i < 3; i++)
         {
-            Spell spell =
-                playerController.player.spellcaster.builder.MakeRandomSpell(playerController.player.spellcaster);
+            Spell spell = GameManager.Instance.spellBuilder.MakeRandomSpell(playerController.player.spellcaster);
             generatedSpells.Add(spell);
             spellList[i].transform.Find("rewardSpellSprite").GetComponent<SpellUI>().SetSpell(spell);
             spellList[i].transform.Find("index").GetComponent<Text>().text = spell.GetName();

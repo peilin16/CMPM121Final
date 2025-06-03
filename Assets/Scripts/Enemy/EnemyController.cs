@@ -65,8 +65,8 @@ public class EnemyController : MonoBehaviour, Controller
         // 订阅 OnMonsterDamaged 事件
         EventBus.Instance.OnMonsterDamaged += this.BeHitting;
         // 获取引用（假设游戏中只有一个玩家）
-        playerTransform = GameObject.FindWithTag("Player").transform;
-        wallTilemap = GameObject.Find("WallTilemap").GetComponent<Tilemap>();
+        playerTransform = GameManager.Instance.player.transform;
+        wallTilemap = GameObject.Find("Wall").GetComponent<Tilemap>();
         // 初始化 Movement
         movement = new EnemyMovement(this, wallTilemap, LayerMask.GetMask("Wall"));
 
@@ -86,6 +86,7 @@ public class EnemyController : MonoBehaviour, Controller
     {
         characterData.Behavior(gameObject); // 委托行为逻辑给 character
         //移动相关逻辑
+        Debug.Log(characterData.destination);
         movement.MoveTowards(characterData.destination);
 
         /*Vector3 direction = target.position - transform.position;
@@ -125,7 +126,7 @@ public class EnemyController : MonoBehaviour, Controller
     {
         if (obj == this.gameObject)
         {
-            Debug.Log("bbb");
+            //Debug.Log("bbb");
             this.healthui.SetHealth(characterData.hp);
         }
         

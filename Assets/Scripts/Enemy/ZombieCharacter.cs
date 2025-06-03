@@ -7,8 +7,9 @@ public class ZombieCharacter : EnemyCharacter
 
     public override void Behavior(GameObject gameObject)
     {
-        if (GameManager.Instance == null || GameManager.Instance.player == null) return;
+        //if (GameManager.Instance == null || GameManager.Instance.player == null) return;
 
+        Debug.Log("aaa");
         Vector3 direction = GameManager.Instance.player.transform.position - gameObject.transform.position;
         float distance = direction.magnitude;
 
@@ -23,8 +24,10 @@ public class ZombieCharacter : EnemyCharacter
         }
         else
         {
+            Debug.Log("aaa");
             if (controller != null)
             {
+
                 this.destination = GameManager.Instance.player.transform.position;
             }
         }
