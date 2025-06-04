@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class ZombieCharacter : EnemyCharacter
 {
-<<<<<<< Updated upstream
-    public ZombieCharacter(EnemySprite sprite, string typ) : base(sprite, typ) { }
+    public ZombieCharacter(EnemySprite sprite, string typ) : base(sprite, typ) {
+
+    }
 
 
 
@@ -23,7 +24,7 @@ public class ZombieCharacter : EnemyCharacter
     {
         //if (GameManager.Instance == null || GameManager.Instance.player == null) return;
 
-        Debug.Log("aaa");
+        //Debug.Log("aaa");
         Vector3 direction = GameManager.Instance.player.transform.position - gameObject.transform.position;
         float distance = direction.magnitude;
 
@@ -38,28 +39,8 @@ public class ZombieCharacter : EnemyCharacter
         }
         else
         {
-            Debug.Log("aaa");
-            if (controller != null)
-            {
-
-                this.destination = GameManager.Instance.player.transform.position;
-            }
+            this.destination = GameManager.Instance.player.transform.position;
+            
         }
     }
 }
-=======
-
-
-
-    public override void StartLevel()
-    {
-        this.StartWave();
-    }
-    public override void StartWave()
-    {
-        //if (this.hp == null)
-        //this.hp = new Hittable(this._final_healthly, Hittable.Team.MONSTERS, gameObject);
-
-    }
-}
->>>>>>> Stashed changes

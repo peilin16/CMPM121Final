@@ -30,7 +30,7 @@ public static class Pathfinder
         Dictionary<Vector3Int, Node> openSet = new Dictionary<Vector3Int, Node>();
         HashSet<Vector3Int> closedSet = new HashSet<Vector3Int>();
 
-        Node startNode = new (startCell, tilemap.GetCellCenterWorld(startCell));
+        Node startNode = new Node(startCell, tilemap.GetCellCenterWorld(startCell));
         startNode.gCost = 0;
         startNode.hCost = Vector3Int.Distance(startCell, endCell);
         openSet[startCell] = startNode;
@@ -57,9 +57,10 @@ public static class Pathfinder
                     continue;
 
                 Vector3 world = tilemap.GetCellCenterWorld(neighborPos);
-                if (Physics2D.OverlapPoint(world, wallMask))
+                /*if (Physics2D.OverlapCircle(world, 0.3f, wallMask)) // 
+                    continue;*/
+                if (IsUnwalkable(world, wallMask))
                     continue;
-
                 float tentativeG = current.gCost + Vector3Int.Distance(current.cellPos, neighborPos);
 
                 if (!openSet.TryGetValue(neighborPos, out Node neighbor))
@@ -81,6 +82,13 @@ public static class Pathfinder
         return new List<Vector3>(); // No path
     }
 
+    // check  passable
+    private static bool IsUnwalkable(Vector3 worldPos, LayerMask wallMask)
+    {
+        return Physics2D.OverlapCircle(worldPos, 0.6f, wallMask);
+    }
+
+
     private static List<Vector3> ReconstructPath(Node endNode)
     {
         List<Vector3> path = new List<Vector3>();
@@ -101,7 +109,11 @@ public static class Pathfinder
             Vector3Int.up,
             Vector3Int.down,
             Vector3Int.left,
-            Vector3Int.right
+            Vector3Int.right,
+            Vector3Int.up + Vector3Int.left,
+            Vector3Int.up + Vector3Int.right,
+            Vector3Int.down + Vector3Int.left,
+            Vector3Int.down + Vector3Int.right
         };
     }
 }

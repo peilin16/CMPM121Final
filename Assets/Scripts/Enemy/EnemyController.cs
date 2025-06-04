@@ -84,9 +84,9 @@ public class EnemyController : MonoBehaviour, Controller
     // Update is called once per frame
     void Update()
     {
-        enemy.Behavior(gameObject); // 委托行为逻辑给 character
-        //移动相关逻辑
-        Debug.Log(enemy.destination);
+        enemy.Behavior(gameObject); //  character
+        //Movement logical
+        //Debug.Log(enemy.destination);
         movement.MoveTowards(enemy.destination);
 
         /*Vector3 direction = target.position - transform.position;
