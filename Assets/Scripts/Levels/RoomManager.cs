@@ -10,7 +10,7 @@ public class RoomManager : MonoBehaviour
 
     void Start()
     {
-        // 初始化：从场景中找所有 room GameObject（如 Room_1_1）
+        // init
         foreach (var go in GameObject.FindGameObjectsWithTag("Room"))
         {
             BoxCollider2D collider = go.GetComponent<BoxCollider2D>();
@@ -18,7 +18,7 @@ public class RoomManager : MonoBehaviour
             {
                 Bounds bounds = collider.bounds;
                 string name = go.name;
-                int id = name.GetHashCode(); // 简化 ID，可替换为自定义
+                int id = name.GetHashCode(); 
 
                 Room room = new Room(name, id, bounds);
                 roomDict[name] = room;
@@ -28,7 +28,6 @@ public class RoomManager : MonoBehaviour
         //this.LoadJson("level1_rooms");
     }
 
-    //主要它只会加载当前level的room如果需要加载其他level请先清空room的list
     public void LoadJson(string level)
     {
         TextAsset jsonText = Resources.Load<TextAsset>(level);
@@ -110,7 +109,7 @@ public class RoomManager : MonoBehaviour
             Debug.Log($"Entered Room: {currentRoom.name}");
         }*/
     }
-    //不推荐使用 请改用level class内部的GetRoomFromPosition
+    //Not Recommand
     public Room GetRoomFromPosition(Vector3 pos)
     {
         foreach (var room in roomDict.Values)

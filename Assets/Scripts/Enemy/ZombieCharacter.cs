@@ -4,7 +4,7 @@ using UnityEngine;
 public class ZombieCharacter : EnemyCharacter
 {
     public ZombieCharacter(EnemySprite sprite, string typ) : base(sprite, typ) {
-
+        stopDistance = 0.7f;
     }
 
 
@@ -28,7 +28,7 @@ public class ZombieCharacter : EnemyCharacter
         Vector3 direction = GameManager.Instance.player.transform.position - gameObject.transform.position;
         float distance = direction.magnitude;
 
-        if (distance <= 1.2f)
+        if (distance <= 1f)
         {
             //Debug.Log("aaa");
             //isMove = false;

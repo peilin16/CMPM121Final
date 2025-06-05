@@ -4,7 +4,7 @@ public class LevelController : MonoBehaviour
 {
     public PlayerController player;
     public EnemySpawner enemySpawner;
-    public GameObject gate; // 拖进来的大门对象
+    public GameObject gate; //
 
 
     private Room lastRoom;
@@ -52,12 +52,12 @@ public class LevelController : MonoBehaviour
 
     private void CloseRoomGates(Room room)
     {
-        gate.SetActive(true); // 激活大门对象
+        gate.SetActive(true); // Open Gates
         Debug.Log($"Gates closed for room: {room.name}");
     }
     private void OpenRoomGates(Room room)
     {
-        gate.SetActive(false); // 关闭大门对象
+        gate.SetActive(false); // Close
         Debug.Log($"Gates closed for room: {room.name}");
     }
 }

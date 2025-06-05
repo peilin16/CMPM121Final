@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 public class Room
 {
-    public string name; //名字
-    public int roomID;//ID
-    public Bounds bounds;//对象
-    public bool isActive = false;//是否激活
-    public bool isCleared = false;//是否已被探索
+    public string name; 
+    public int roomID;//
+    public Bounds bounds;//
+    public bool isActive = false;//
+    public bool isCleared = false;//
     public List<List<EnemyCharacter>> waves = new List<List<EnemyCharacter>>();
 
 

@@ -46,7 +46,7 @@ public class EnemyController : MonoBehaviour, Controller
     }
 
 
-    //移动逻辑在这
+    //movement logical
     protected EnemyMovement movement;
     private Transform playerTransform;
     private Tilemap wallTilemap;
@@ -55,19 +55,18 @@ public class EnemyController : MonoBehaviour, Controller
 
 
     //public EnemyCharacter enemy;
-    // 初始化逻辑 //初始化敌人 由于没有构造方法请使用init初始化
+    // init controller
     public void Init(EnemyCharacter character)
     {
         this.enemy = character;
         enemy.gameObject = this.gameObject;
         this.enemy.InitController(this);
         healthui.SetHealth(enemy.hp);
-        // 订阅 OnMonsterDamaged 事件
+
         EventBus.Instance.OnMonsterDamaged += this.BeHitting;
-        // 获取引用（假设游戏中只有一个玩家）
         playerTransform = GameManager.Instance.player.transform;
         wallTilemap = GameObject.Find("Wall").GetComponent<Tilemap>();
-        // 初始化 Movement
+        //init movement
         movement = new EnemyMovement(this, wallTilemap, LayerMask.GetMask("Wall"));
 
 
@@ -91,28 +90,8 @@ public class EnemyController : MonoBehaviour, Controller
         enemy.Behavior(gameObject); //  character
         
             //Debug.Log("moving");
-        movement.MoveTowards(enemy.destination);// if enemy need to moving
+        movement.MoveTowards(enemy.destination, enemy.stopDistance);// if enemy need to moving
         
-
-        //Movement logical
-        //Debug.Log(enemy.destination);
-        /*if (GameManager.Instance.player.transform != null)
-        {
-            float stopDistance = 0.5f; 
-
-            float distance = Vector3.Distance(GameManager.Instance.player.transform.position, transform.position);
-            if (distance < stopDistance)
-            {
-                
-                GetComponent<Unit>().movement = Vector2.zero;
-                return;
-            }
-            
-
-            
-            movement.MoveTowards(enemy.destination);
-        }*/
-
 
     }
 

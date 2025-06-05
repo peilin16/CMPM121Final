@@ -35,16 +35,15 @@ public class LevelManager
     {
         string levelName = $"level{level}";
         currentLevelName = levelName;
-        // 清除旧关卡数据
+
         levels.Clear();
         string JsonName = $"level{level}_rooms";
-        // 通知 RoomManager 加载房间数据
+        // inform RoomManager load json
         GameManager.Instance.roomManager.LoadJson(JsonName);
 
-        // 获取 RoomManager 中的房间数据（已加载）
+        // Obtain RoomManager Data
         var loadedRooms = GameManager.Instance.roomManager.roomDict;
 
-        // 生成新 Level
         Level newLevel = new Level
         {
             level_id = GameManager.Instance.GenerateID(),

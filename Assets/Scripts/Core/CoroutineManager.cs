@@ -60,7 +60,7 @@ public class CoroutineManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 停止某个具体协程
+    /// Stop
     /// </summary>
     public void StopManagedCoroutine(string group, string id)
     {
@@ -77,7 +77,7 @@ public class CoroutineManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 停止某个分组内所有协程
+    /// Stop group
     /// </summary>
     public void StopGroup(string group)
     {
@@ -92,7 +92,7 @@ public class CoroutineManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 停止全部协程
+    /// Stop All
     /// </summary>
     public void StopAllManagedCoroutines()
     {

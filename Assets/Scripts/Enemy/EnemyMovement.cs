@@ -28,9 +28,11 @@ public class EnemyMovement
         //this.setCoolDown();
     }
 
+    public void setCoolDown(float c) {
+        pathCooldown = c;
+    }
 
-
-    //冷却时间防止每一帧寻路一次 定时部分
+    //cool down
     private bool IsCooldownOver()
     {
         return (Time.time - lastPathTime > pathCooldown);
@@ -78,14 +80,14 @@ public class EnemyMovement
         Vector3 direction = (target - enemy.transform.position).normalized;
 
         //check volume
-        /*if (Physics2D.OverlapCircle(target, 0.3f, wallMask))
+        if (Physics2D.OverlapCircle(target, 0.3f, wallMask))
         {
             // check the position reachable
             Debug.Log("sec refind c:" + currentPath.Count + " index:" + pathIndex);
             currentPath = Pathfinder.FindPath(enemy.transform.position, destination, collisionTilemap, wallMask);
             pathIndex = 0;
             return;
-        }*/
+        }
         //Debug.Log("ccc");
         // check the wall corner
         RaycastHit2D hit = Physics2D.Raycast(enemy.transform.position, direction, 0.4f, wallMask);
@@ -118,7 +120,6 @@ public class EnemyMovement
         //Debug.Log("is Working");
         /*if (Vector3.Distance(enemy.transform.position, destination) < 0.5f)
         {
-            // 接近目标后清除移动
             enemy.GetComponent<Unit>().movement = Vector2.zero;
             return;
         }*/

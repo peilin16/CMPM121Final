@@ -7,13 +7,13 @@ public class GameManager
 {
     public enum GameState
     {
-        PREGAME,//游戏开始的状态
-        INWAVE, //玩家在房间内受到攻击的状态
+        PREGAME,
+        INWAVE, 
         WAVEEND,//
 
-        EXPEDITION,//当玩家自由探索地图时的状态
+        EXPEDITION,
         COUNTDOWN,
-        GAMEOVER//游戏结束
+        GAMEOVER
 
     }
     public GameState state;
@@ -40,37 +40,37 @@ public class GameManager
         }
     }
     private static long _nextID = 0;
-    //自增式ID生成
+    //ID generate
     public long GenerateID()
     {
         return _nextID++;
     }
 
-    //Level 相关
+    //Level 
     public LevelManager levelManager;
     public RoomManager roomManager;
-    //spell 相关
+    //spell 
     public ProjectileManager projectileManager;
     public SpellIconManager spellIconManager;
     public SpellBuilder spellBuilder;
-    //enemy相关
+    //enemy
     public EnemySpriteManager enemySpriteManager;
     public EnemyCharacterManager enemyCharacterManager;
     public EnemyManager enemyManager;
-    //player相关
+    //player
     public GameObject player;
     public PlayerController playerController;
     public PlayerSpriteManager playerSpriteManager;
-    //relic相关
+    //relic
     public RelicIconManager relicIconManager;
     public RelicManager relicManager;
-    //reward 相关
+    //reward 
     //public RewardManager rewardManager;
 
 
 
 
-    //其他
+    //other
     public int defectCount;
     public float waveSpendTime = 0f;
     public bool isTiming = false;

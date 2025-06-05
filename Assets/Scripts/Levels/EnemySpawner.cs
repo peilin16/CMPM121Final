@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-    //开始波次
+
     public void StartWave(Room room)
     {
         currentRoom = room;
@@ -30,28 +30,28 @@ public class EnemySpawner : MonoBehaviour
 
         CoroutineManager.Instance.StartManagedCoroutine("EnemySpawn", "wave " + GameManager.Instance.currentWave, SpawnWave(room));
     }
-    //下一波
+
     private void NextWave(Room room)
     {
         GameManager.Instance.currentWave++;
 
-        // 如果还有下一波
+        // if exit next wave
         if (GameManager.Instance.currentWave <= room.waves.Count)
         {
             CoroutineManager.Instance.StartManagedCoroutine("EnemySpawn", "wave " + GameManager.Instance.currentWave, SpawnWave(room));
         }
         else
         {
-            // 所有波次完成
+            // 
             WaveEnd();
         }
     }
-    //所有波次结束
+    //end
     private void WaveEnd()
     {
         GameManager.Instance.state = GameManager.GameState.WAVEEND;
 
-        // 标记当前房间完成
+        // 
         if (currentRoom != null)
         {
             currentRoom.isCleared = true;
@@ -59,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
         }
             
 
-        // 打开门或进行其他处理
+
         /*LevelController levelController = FindObjectOfType<LevelController>();
         if (levelController != null)
         {
@@ -68,7 +68,7 @@ public class EnemySpawner : MonoBehaviour
 
         Debug.Log($"Room {currentRoom.name} cleared.");
     }
-    //敌人部署的协程
+
     IEnumerator SpawnWave(Room room)
     {
         GameManager.Instance.state = GameManager.GameState.INWAVE;
@@ -89,7 +89,7 @@ public class EnemySpawner : MonoBehaviour
             this.SpawnEnemy(enemyChar, spawnPos);
         }
 
-        // 等待所有敌人死亡
+
         yield return new WaitWhile(() => GameManager.Instance.enemyManager.enemy_count > 0);
 
         if (GameManager.Instance.state != GameManager.GameState.GAMEOVER)
@@ -99,7 +99,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     
-    //spawn enemy 方法
+    //spawn enemy 
     private void SpawnEnemy(EnemyCharacter character, Vector3 pos)
     {
         GameObject enemyObj = Instantiate(enemy, pos, Quaternion.identity);
@@ -107,7 +107,7 @@ public class EnemySpawner : MonoBehaviour
         enemyObj.GetComponent<SpriteRenderer>().sprite = GameManager.Instance.enemySpriteManager.Get(character.enemySprite.spriteIndex);
         
         EnemyController controller = enemyObj.GetComponent<EnemyController>();
-        controller.Init(character);//初始化敌人 由于没有构造方法请使用init初始化
+        controller.Init(character);
         controller.character.gameObject = enemyObj; //set gameObject
         GameManager.Instance.enemyManager.AddEnemy(enemyObj);
     }

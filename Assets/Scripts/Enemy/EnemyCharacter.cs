@@ -24,9 +24,9 @@ public class EnemyCharacter : Character
     public float final_speed;
     public float final_damage;
     public Vector3 destination;
-    //引入控制器对象
+    //controller
     protected EnemyController controller;
-
+    protected float stopDistance;
     //public bool isMove { get; protected set; }
     public string type;
 
@@ -39,7 +39,7 @@ public class EnemyCharacter : Character
         this._final_healthly = sprite.healthly;
         this.final_speed = sprite.speed;
         this.final_damage = sprite.damage;
-        
+        this.stopDistance = 0.7f;
     }
     
     public override void StartLevel() {
@@ -50,7 +50,7 @@ public class EnemyCharacter : Character
         //if (this.hp == null)
         this.hp = new Hittable(this._final_healthly, Hittable.Team.MONSTERS, gameObject);
         this.controller = c;
-        //isMove = true;
+        
     }
 
 
