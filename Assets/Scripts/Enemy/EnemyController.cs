@@ -70,6 +70,10 @@ public class EnemyController : MonoBehaviour, Controller
         // ≥ı ºªØ Movement
         movement = new EnemyMovement(this, wallTilemap, LayerMask.GetMask("Wall"));
 
+
+        /*Collider2D enemyCol = GetComponent<Collider2D>();
+        Collider2D playerCol = GameManager.Instance.player.GetComponent<Collider2D>();
+        Physics2D.IgnoreCollision(enemyCol, playerCol);*/
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -85,11 +89,10 @@ public class EnemyController : MonoBehaviour, Controller
     void Update()
     {
         enemy.Behavior(gameObject); //  character
-        if (enemy.isMove)
-        {
-            Debug.Log("moving");
-            movement.MoveTowards(enemy.destination);// if enemy need to moving
-        }
+        
+            //Debug.Log("moving");
+        movement.MoveTowards(enemy.destination);// if enemy need to moving
+        
 
         //Movement logical
         //Debug.Log(enemy.destination);

@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 
-//ÒÆ¶¯Âß¼­µ÷ÓÃ
+
 public static class Pathfinder
 {
     private class Node

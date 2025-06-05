@@ -13,36 +13,35 @@ public class EnemyMovement
     private Vector3 lastDestination ;
     private float pathCooldown = 0.5f; // 每 0.5 秒最多寻路一次
     private float lastPathTime = 0f;
-    private float stopDistance = 1.1f;
+
     
-    //冷却时间防止每一帧寻路一次 定时部分
-    public void setCoolDown(float t = 0.5f)
-    {
-        pathCooldown = t;
-    }
-    private bool CoolDown()
-    {
-        lastPathTime = Time.time;
-        return (Time.time - lastPathTime > pathCooldown);
-    }
 
 
 
-    //停止位置
-    public void setStopDistance(float s)
-    {
-        this.stopDistance = s;
-    }
+
     
     public EnemyMovement(EnemyController character, Tilemap tilemap, LayerMask wallMask)
     {
         this.enemy = character;
         this.collisionTilemap = tilemap;
         this.wallMask = wallMask;
-        this.setCoolDown();
+        //this.setCoolDown();
     }
 
-    public void MoveTowards(Vector3 destination)
+
+
+    //冷却时间防止每一帧寻路一次 定时部分
+    private bool IsCooldownOver()
+    {
+        return (Time.time - lastPathTime > pathCooldown);
+    }
+
+    private void ResetCooldown()
+    {
+        lastPathTime = Time.time;
+    }
+
+    public void MoveTowards(Vector3 destination, float stopDistance = 0.7f)
     {
 
         /*if (!CoolDown())
@@ -60,15 +59,16 @@ public class EnemyMovement
         }
 
 
-        lastDestination = destination;
 
-        if ( (currentPath.Count == 0 || pathIndex >= currentPath.Count || Vector3.Distance(destination, lastDestination) > stopDistance))
+
+        bool needNewPath = (lastDestination != destination && IsCooldownOver());
+
+        if (needNewPath || currentPath == null || currentPath.Count == 0 || pathIndex >= currentPath.Count)
         {
-            
             currentPath = Pathfinder.FindPath(enemy.transform.position, destination, collisionTilemap, wallMask);
-            Debug.Log("first refind c:"+ currentPath.Count +" index:"+ pathIndex);
             pathIndex = 0;
-            lastDestination = destination; // record the current destination
+            lastDestination = destination;
+            ResetCooldown();
         }
 
         if (currentPath == null || currentPath.Count == 0 || pathIndex >= currentPath.Count)

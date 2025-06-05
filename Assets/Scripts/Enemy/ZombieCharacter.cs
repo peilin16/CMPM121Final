@@ -28,10 +28,10 @@ public class ZombieCharacter : EnemyCharacter
         Vector3 direction = GameManager.Instance.player.transform.position - gameObject.transform.position;
         float distance = direction.magnitude;
 
-        if (distance <= 1.1f)
+        if (distance <= 1.2f)
         {
             //Debug.Log("aaa");
-            isMove = false;
+            //isMove = false;
             if (controller.last_attack + 2f < Time.time)
             {
                 controller.last_attack = Time.time;
@@ -41,7 +41,7 @@ public class ZombieCharacter : EnemyCharacter
         else
         {
             this.destination = GameManager.Instance.player.transform.position;
-            isMove = true;
+            //isMove = true;
         }
     }
 }
