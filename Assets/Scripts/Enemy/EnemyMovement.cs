@@ -13,7 +13,7 @@ public class EnemyMovement
     private Vector3 lastDestination ;
     private float pathCooldown = 0.5f; // 每 0.5 秒最多寻路一次
     private float lastPathTime = 0f;
-
+    private float stopDistance = 1.1f;
     
     //冷却时间防止每一帧寻路一次 定时部分
     public void setCoolDown(float t = 0.5f)
@@ -28,7 +28,12 @@ public class EnemyMovement
 
 
 
-
+    //停止位置
+    public void setStopDistance(float s)
+    {
+        this.stopDistance = s;
+    }
+    
     public EnemyMovement(EnemyController character, Tilemap tilemap, LayerMask wallMask)
     {
         this.enemy = character;
@@ -42,12 +47,22 @@ public class EnemyMovement
 
         /*if (!CoolDown())
             return;*/
-        if (Vector3.Distance(destination, this.enemy.gameObject.transform.position) < 0.8f)
-            return; // arrive destination.
+        /*if ()
+            return; // arrive destination.*/
+
+
+        Debug.Log("D: "+Vector3.Distance(enemy.transform.position, destination));
+        if (Vector3.Distance(enemy.transform.position, destination) <= stopDistance)
+        {
+            enemy.GetComponent<Unit>().movement = Vector2.zero;
+            Debug.Log("stop");
+            return;
+        }
+
 
         lastDestination = destination;
 
-        if ( (currentPath.Count == 0 || pathIndex >= currentPath.Count || Vector3.Distance(destination, lastDestination) > 0.5f))
+        if ( (currentPath.Count == 0 || pathIndex >= currentPath.Count || Vector3.Distance(destination, lastDestination) > stopDistance))
         {
             
             currentPath = Pathfinder.FindPath(enemy.transform.position, destination, collisionTilemap, wallMask);
@@ -58,19 +73,19 @@ public class EnemyMovement
 
         if (currentPath == null || currentPath.Count == 0 || pathIndex >= currentPath.Count)
             return;
-        Debug.Log("bbb");
+        //Debug.Log("bbb");
         Vector3 target = currentPath[pathIndex]; 
         Vector3 direction = (target - enemy.transform.position).normalized;
 
         //check volume
-        if (Physics2D.OverlapCircle(target, 0.3f, wallMask))
+        /*if (Physics2D.OverlapCircle(target, 0.3f, wallMask))
         {
             // check the position reachable
             Debug.Log("sec refind c:" + currentPath.Count + " index:" + pathIndex);
             currentPath = Pathfinder.FindPath(enemy.transform.position, destination, collisionTilemap, wallMask);
             pathIndex = 0;
             return;
-        }
+        }*/
         //Debug.Log("ccc");
         // check the wall corner
         RaycastHit2D hit = Physics2D.Raycast(enemy.transform.position, direction, 0.4f, wallMask);
@@ -84,14 +99,28 @@ public class EnemyMovement
         }
         //Debug.Log("ddd");
         // if arrive the position, turn to next position
-        if (Vector3.Distance(enemy.transform.position, target) < 0.1f)
+        if (Vector3.Distance(enemy.transform.position, target) < 0.3f)
         {
             pathIndex++;
+            // If final path
+            /*if (pathIndex >= currentPath.Count)
+            {
+                enemy.GetComponent<Unit>().movement = Vector2.zero;
+                return;
+            }*/
         }
         else
         {
             // moving
             enemy.GetComponent<Unit>().movement = direction * enemy.enemy.final_speed;
+            //Debug.Log(" index:" + pathIndex+ " " + currentPath[pathIndex] + " " + currentPath[pathIndex - 1] +" "+ destination);
         }
+        //Debug.Log("is Working");
+        /*if (Vector3.Distance(enemy.transform.position, destination) < 0.5f)
+        {
+            // 接近目标后清除移动
+            enemy.GetComponent<Unit>().movement = Vector2.zero;
+            return;
+        }*/
     }
 }

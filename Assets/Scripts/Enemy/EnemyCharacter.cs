@@ -26,6 +26,8 @@ public class EnemyCharacter : Character
     public Vector3 destination;
     //引入控制器对象
     protected EnemyController controller;
+
+    public bool isMove { get; protected set; }
     public string type;
 
     public EnemyCharacter() { }
@@ -48,6 +50,7 @@ public class EnemyCharacter : Character
         //if (this.hp == null)
         this.hp = new Hittable(this._final_healthly, Hittable.Team.MONSTERS, gameObject);
         this.controller = c;
+        isMove = true;
     }
 
 

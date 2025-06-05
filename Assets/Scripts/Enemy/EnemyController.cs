@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour, Controller
     protected EnemyMovement movement;
     private Transform playerTransform;
     private Tilemap wallTilemap;
-
+    
 
 
 
@@ -85,19 +85,32 @@ public class EnemyController : MonoBehaviour, Controller
     void Update()
     {
         enemy.Behavior(gameObject); //  character
+        if (enemy.isMove)
+        {
+            Debug.Log("moving");
+            movement.MoveTowards(enemy.destination);// if enemy need to moving
+        }
+
         //Movement logical
         //Debug.Log(enemy.destination);
-        movement.MoveTowards(enemy.destination);
+        /*if (GameManager.Instance.player.transform != null)
+        {
+            float stopDistance = 0.5f; 
 
-        /*Vector3 direction = target.position - transform.position;
-        if (direction.magnitude < 2f)
-        {
-            DoAttack();
-        }
-        else
-        {
-            GetComponent<Unit>().movement = direction.normalized * characterData.final_speed;
+            float distance = Vector3.Distance(GameManager.Instance.player.transform.position, transform.position);
+            if (distance < stopDistance)
+            {
+                
+                GetComponent<Unit>().movement = Vector2.zero;
+                return;
+            }
+            
+
+            
+            movement.MoveTowards(enemy.destination);
         }*/
+
+
     }
 
     /*

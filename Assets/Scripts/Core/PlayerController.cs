@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour ,Controller
         GameManager.Instance.player = this.gameObject;
         GameManager.Instance.playerController = this;
         EventBus.Instance.OnPlayerDeath += HandlePlayerDeath;
-
+        EventBus.Instance.OnPlayerDamaged += OnHurt;
     }
     public void loadCharacter(int index = 0)
     {
@@ -152,7 +152,6 @@ public class PlayerController : MonoBehaviour ,Controller
             relic.Update(this); // Pass PlayerController to relic
         }
         //Stop checking
-        //玩家静止检查
         if ((transform.position - lastPosition).sqrMagnitude < 0.001f)
         {
             localStandStillTime += Time.deltaTime;
@@ -192,6 +191,13 @@ public class PlayerController : MonoBehaviour ,Controller
         if (GameManager.Instance.state == GameManager.GameState.PREGAME || GameManager.Instance.state == GameManager.GameState.GAMEOVER) return;
         unit.movement = value.Get<Vector2>()*player.speed;
     }
+    // player on hurt
+    void OnHurt(Damage damage)
+    {
+        this.healthui.SetHealth(player.hp);
+    }
+
+
     private void HandlePlayerDeath(GameObject obj)
     {
         if (obj == this.gameObject)
@@ -199,10 +205,14 @@ public class PlayerController : MonoBehaviour ,Controller
             Die(); // existing method
         }
     }
+
+
     public void Die()
     {
         player.Die();
         //Debug.Log("aaa");
+        EventBus.Instance.OnPlayerDamaged -= OnHurt;
+        EventBus.Instance.OnPlayerDeath -= HandlePlayerDeath;
         GameManager.Instance.state = GameManager.GameState.GAMEOVER;
         GameManager.Instance.RestartGame();
     }

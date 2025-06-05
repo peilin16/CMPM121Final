@@ -95,6 +95,7 @@ public static class Pathfinder
         Node current = endNode;
         while (current != null)
         {
+            
             path.Add(current.worldPos);
             current = current.parent;
         }
