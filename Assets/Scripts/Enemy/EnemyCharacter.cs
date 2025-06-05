@@ -26,7 +26,7 @@ public class EnemyCharacter : Character
     public Vector3 destination;
     //controller
     protected EnemyController controller;
-    protected float stopDistance;
+    public float stopDistance;
     //public bool isMove { get; protected set; }
     public string type;
 
