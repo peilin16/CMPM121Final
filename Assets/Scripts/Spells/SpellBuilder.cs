@@ -107,6 +107,18 @@ public class SpellBuilder
                         modifierSpellDB[pair.Key] = new WaverModifier(obj);
                         break;
 
+                    case "nova":
+                        modifierSpellDB[pair.Key] = new NovaModifier(obj);
+                        break;
+
+                    case "Frost":
+                        modifierSpellDB[pair.Key] = new FrostModifier(obj);
+                        break;
+
+                    case "haste":
+                        modifierSpellDB[pair.Key] = new HasteModifier(obj);
+                        break;
+
                     default:
                         Debug.LogWarning($"[LoadModifiedSpells] Unknown modifier name: {name}");
                         break;
@@ -208,12 +220,12 @@ public class SpellBuilder
             data.secondary_projectile.base_speed = RPNCalculator.EvaluateFloat(data.secondary_projectile.speed, wave, power);
             if (!string.IsNullOrEmpty(data.secondary_projectile.lifetime))
                 data.secondary_projectile.base_lifetime = RPNCalculator.EvaluateFloat(data.secondary_projectile.lifetime, wave, power);
-        }
-
-
-        // if require the different effect spell
+        }        // if require the different effect spell
         if (data.name == "Arcane Spray")
             return new ArcaneSpraySpell(owner, data);
+        
+        if (data.name == "Arcane Nova")
+            return new ArcaneNova(owner, data);
         
         return new Spell(owner, data);
     }
