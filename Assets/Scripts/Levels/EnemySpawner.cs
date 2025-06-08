@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Linq;
 using TMPro;
+using UnityEngine.Tilemaps;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
     private int currentWave;
     public GameObject enemy;
 
+    [SerializeField] private Tilemap wallTilemap; // 
 
     void Start()
     {
@@ -118,8 +120,9 @@ public class EnemySpawner : MonoBehaviour
 
 
 
-    //获取部署位置
-    private Vector3 GetRandomPos(Room room)
+    //get spawn position
+
+    private Vector3 GetRandomPos(Room room,float minWallDistance = 0.6f)
     {
         int maxTries = 20;
         float minDistanceToPlayer = 2.0f;
@@ -133,18 +136,48 @@ public class EnemySpawner : MonoBehaviour
                 0
             );
 
-            if (Vector3.Distance(spawnPos, playerPos) >= minDistanceToPlayer)
-            {
+            // if too close with player
+            if (Vector3.Distance(spawnPos, playerPos) < minDistanceToPlayer)
+                continue;
+
+            // if too close with wall
+            if (IsNearWall(spawnPos, minWallDistance))
+                continue;
+
+            return spawnPos;
+        }
+
+        // fallback 
+        for (int i = 0; i < 10; i++)
+        {
+            Vector3 spawnPos = new Vector3(
+                Random.Range(room.bounds.min.x + 0.5f, room.bounds.max.x - 0.5f),
+                Random.Range(room.bounds.min.y + 0.5f, room.bounds.max.y - 0.5f),
+                0
+            );
+            if (!IsNearWall(spawnPos, minWallDistance))
                 return spawnPos;
+        }
+
+        return room.bounds.center;
+    }
+
+    private bool IsNearWall(Vector3 position, float minWallDistance)
+    {
+        Vector3Int centerCell = wallTilemap.WorldToCell(position);
+        int range = Mathf.CeilToInt(minWallDistance / wallTilemap.cellSize.x); // 假设方格宽高一致
+
+        for (int dx = -range; dx <= range; dx++)
+        {
+            for (int dy = -range; dy <= range; dy++)
+            {
+                Vector3Int checkCell = centerCell + new Vector3Int(dx, dy, 0);
+                if (wallTilemap.HasTile(checkCell))
+                    return true;
             }
         }
 
-        // 如果尝试多次后仍然失败，就返回最后一次的位置（可能离玩家较近）
-        return new Vector3(
-            Random.Range(room.bounds.min.x + 0.5f, room.bounds.max.x - 0.5f),
-            Random.Range(room.bounds.min.y + 0.5f, room.bounds.max.y - 0.5f),
-            0
-        );
+        return false;
     }
     /*
     Vector3 PickSpawnPoint(string location)

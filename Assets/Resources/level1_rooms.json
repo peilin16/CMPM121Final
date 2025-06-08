@@ -50,7 +50,7 @@
         "enemies": [
           {
             "enemy": "zombie",
-            "count": 1,
+            "count": 5,
             "hp": 27,
             "location": "random"
           }
