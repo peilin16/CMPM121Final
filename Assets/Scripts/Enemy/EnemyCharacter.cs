@@ -26,7 +26,7 @@ public class EnemyCharacter : Character
     public Vector3 destination;
     //controller
     protected EnemyController controller;
-    protected float stopDistance;
+    public float stopDistance;
     //public bool isMove { get; protected set; }
     public string type;
 
@@ -54,7 +54,7 @@ public class EnemyCharacter : Character
     }
 
 
-    //µ±Ç°Ä¬ÈÏÏòÍæ¼ÒÒÆ¶¯µÄÂß¼­
+    //ï¿½ï¿½Ç°Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
     public virtual void Behavior(GameObject gameObject)
     {
 
@@ -66,7 +66,7 @@ public class EnemyCharacter : Character
 
         if (distance < 2f)
         {
-            // ¼òµ¥½üÕ½¹¥»÷Âß¼­
+            // ï¿½òµ¥½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
             EnemyController ctrl = gameObject.GetComponent<EnemyController>();
             if (ctrl.last_attack + 2f < Time.time)
             {
@@ -78,7 +78,7 @@ public class EnemyCharacter : Character
         {
             gameObject.GetComponent<Unit>().movement = direction.normalized * final_speed;
         }*/
-        //Çë¸ù¾Ý×Ô¼ºµÄÐèÇó¸ü¸Äbehavoir·½·¨
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½behavoirï¿½ï¿½ï¿½ï¿½
     }
     public virtual EnemyCharacter Clone()
     {

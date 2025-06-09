@@ -51,7 +51,7 @@
     "damage_multiplier": "0.75",
     "mana_adder": "10",
     "projectile_trajectory": "homing"
-  },
+  },  
   "haste": {
     "name": "haste",
     "description": "Reduces cooldown and mana cost.",
@@ -65,5 +65,12 @@
     "type": "modifier",
     "slow_factor": "0.3",
     "slow_duration": "3.0"
+  },
+  "nova": {
+    "name": "nova",
+    "description": "Creates area-of-effect damage on hit.",
+    "aoe_damage": "30",
+    "aoe_radius": "3",
+    "damage_type": "arcane"
   }
 }

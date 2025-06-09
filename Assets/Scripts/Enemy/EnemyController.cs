@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour, Controller
     public Character character
     {
         get => enemy;
-       set => enemy = (EnemyCharacter)value;//ÓÐÒÅÁôÎÊÌâ Ö±½Óµ÷ÓÃenemy¶ÔÏó ²»ÒªÓÃset²»È»»á¸²¸ÇµôÔ­ÓÐµÄÉèÖÃ
+       set => enemy = (EnemyCharacter)value;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ö±ï¿½Óµï¿½ï¿½ï¿½enemyï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Òªï¿½ï¿½setï¿½ï¿½È»ï¿½á¸²ï¿½Çµï¿½Ô­ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     public HealthBar HealthUI
@@ -90,8 +90,7 @@ public class EnemyController : MonoBehaviour, Controller
         enemy.Behavior(gameObject); //  character
         
             //Debug.Log("moving");
-        movement.MoveTowards(enemy.destination, enemy.stopDistance);// if enemy need to moving
-        
+        movement.MoveTowards(enemy.destination, enemy.stopDistance);//enemy  moving
 
     }
 
