@@ -90,8 +90,7 @@ public class EnemyController : MonoBehaviour, Controller
         enemy.Behavior(gameObject); //  character
         
             //Debug.Log("moving");
-        movement.MoveTowards(enemy.destination, enemy.stopDistance);// if enemy need to moving
-        
+        movement.MoveTowards(enemy.destination, enemy.stopDistance);//enemy  moving
 
     }
 
