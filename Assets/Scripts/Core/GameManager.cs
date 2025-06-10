@@ -35,6 +35,7 @@ public class GameManager
                 theInstance.enemyManager = new EnemyManager();
                 //theInstance.roomManager = new RoomManager();
                 theInstance.levelManager = new LevelManager();
+                theInstance.recordCenter = new RecordCenter();
             }    
             return theInstance;
         }
@@ -64,8 +65,8 @@ public class GameManager
     //relic
     public RelicIconManager relicIconManager;
     public RelicManager relicManager;
-    //reward 
-    //public RewardManager rewardManager;
+    //record 
+    public RecordCenter recordCenter;
 
 
 

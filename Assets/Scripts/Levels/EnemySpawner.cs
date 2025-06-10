@@ -59,15 +59,11 @@ public class EnemySpawner : MonoBehaviour
             currentRoom.isCleared = true;
             currentRoom.isActive = false;
         }
-            
+
+        EventBus.Instance.TriggerCleanRoomAction(GameManager.Instance.playerController);
 
 
-        /*LevelController levelController = FindObjectOfType<LevelController>();
-        if (levelController != null)
-        {
-            levelController.OpenRoomGates(currentRoom);
-        }*/
-
+        EventCenter.Broadcast(EventDefine.ShowSpellSelectorPanel);
         Debug.Log($"Room {currentRoom.name} cleared.");
     }
 

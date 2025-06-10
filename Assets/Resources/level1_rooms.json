@@ -16,7 +16,7 @@
         "enemies": [
           {
             "enemy": "zombie",
-            "count": 8,
+            "count": 7,
             "hp": 27,
             "location": "random"
           }
@@ -26,7 +26,7 @@
         "enemies": [
           {
             "enemy": "zombie",
-            "count": 5,
+            "count": 4,
             "hp": 27,
             "damage": 5,
             "location": "random"
@@ -60,7 +60,7 @@
         "enemies": [
           {
             "enemy": "zombie",
-            "count": 8,
+            "count": 4,
             "hp": 27,
             "location": "random"
           },
@@ -77,7 +77,7 @@
         "enemies": [
           {
             "enemy": "zombie",
-            "count": 12,
+            "count": 7,
             "hp": 27,
             "damage": 5,
             "location": "random"
@@ -93,4 +93,71 @@
       }
     ]
   }
+  ,
+  {
+    "name": "Room_3_1",
+    "waves": [
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 12,
+            "hp": 34,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 3,
+            "hp": 66,
+            "speed": 7,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 4,
+            "hp": 34,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 3,
+            "hp": 41,
+            "speed": 7,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 1,
+            "hp": 66,
+            "speed": 7,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 7,
+            "hp": 34,
+            "damage": 5,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 3,
+            "hp": 66,
+            "speed": 7,
+            "location": "random"
+          }
+        ]
+      }
+    ]
+  }
+
+
 ]
