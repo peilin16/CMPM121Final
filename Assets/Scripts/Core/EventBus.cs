@@ -3,7 +3,7 @@ using System;
 
 public class EventBus 
 {
-    //���лص���Ӧд��eventbus��
+    //Event Bus Instance
     private static EventBus theInstance;
     public static EventBus Instance
     {
@@ -35,7 +35,14 @@ public class EventBus
     // spell collison 
     public Action<Controller> SpellCollision;
     public Action<Controller> SpellCollideToWall;
-    
+    //Room 
+    public Action<Controller> CleanRoomAction;
+
+    public void TriggerCleanRoomAction(Controller c)
+    {
+        CleanRoomAction?.Invoke(c);
+    }
+
     public void TriggerStandStill()
     {
         OnPlayerStandStill?.Invoke();

@@ -41,20 +41,9 @@ public class SpellBuilder
             {
                 JObject obj = (JObject)pair.Value;
 
-                // If it doesn't have spell-modifying keys, treat as base spell
-                bool isModifier =
-                    obj["damage_multiplier"] != null ||
-                    obj["mana_multiplier"] != null ||
-                    obj["mana_adder"] != null ||
-                    obj["speed_multiplier"] != null ||
-                    obj["cooldown_multiplier"] != null ||
-                    obj["projectile_trajectory"] != null;
-
-                if (!isModifier)
-                {
-                    SpellData data = obj.ToObject<SpellData>();
-                    spellDB[pair.Key] = data;
-                }
+                SpellData data = obj.ToObject<SpellData>();
+                spellDB[pair.Key] = data;
+                
             }
             catch
             {

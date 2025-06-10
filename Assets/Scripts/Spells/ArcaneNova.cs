@@ -2,7 +2,10 @@ using UnityEngine;
 using System.Collections;
 
 public class ArcaneNova : Spell
-{    public ArcaneNova(SpellCaster owner, SpellData data) : base(owner, data)
+{
+
+
+    public ArcaneNova(SpellCaster owner, SpellData data) : base(owner, data)
     {
         // Add the nova modifier by default
         NovaModifier novaModifier = new NovaModifier(data.base_damage * 0.8f, 3f, Damage.Type.ARCANE);
@@ -10,7 +13,9 @@ public class ArcaneNova : Spell
 
         // Keep the original speed for now to test if projectile appears
         // this.final_speed *= 0.5f;
-    }    public override IEnumerator Cast(Vector3 where, Vector3 target, Hittable.Team team, bool isModified = true)
+    }
+
+    public override IEnumerator Cast(Vector3 where, Vector3 target, Hittable.Team team, bool isModified = true)
     {
         // Set the where and target fields like the base spell does
         this.where = where;

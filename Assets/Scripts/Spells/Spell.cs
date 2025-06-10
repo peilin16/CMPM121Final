@@ -129,7 +129,7 @@ public class Spell
 
         this.applicateModify();
     }
-    //更新所有的 修改器 重新调用一遍application方法
+    //更新所有的修改器,重新调用一遍application方法
     public void applicateModify()
     {
         this.is_applicated = true;

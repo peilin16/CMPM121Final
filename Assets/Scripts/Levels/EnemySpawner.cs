@@ -59,8 +59,9 @@ public class EnemySpawner : MonoBehaviour
             currentRoom.isCleared = true;
             currentRoom.isActive = false;
         }
-            
 
+        //Event Bus
+        EventBus.Instance.TriggerCleanRoomAction(GameManager.Instance.playerController);
 
         /*LevelController levelController = FindObjectOfType<LevelController>();
         if (levelController != null)

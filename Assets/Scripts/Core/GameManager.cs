@@ -33,8 +33,9 @@ public class GameManager
 
                 theInstance.spellBuilder = new SpellBuilder();
                 theInstance.enemyManager = new EnemyManager();
-                //theInstance.roomManager = new RoomManager();
+                //theInstance.roomManager = new RoomManager(); 
                 theInstance.levelManager = new LevelManager();
+                theInstance.record = new Record();
             }    
             return theInstance;
         }
@@ -46,6 +47,7 @@ public class GameManager
         return _nextID++;
     }
 
+    //sub manager
     //Level 
     public LevelManager levelManager;
     public RoomManager roomManager;
@@ -64,8 +66,8 @@ public class GameManager
     //relic
     public RelicIconManager relicIconManager;
     public RelicManager relicManager;
-    //reward 
-    //public RewardManager rewardManager;
+    //record 
+    public Record record;
 
 
 

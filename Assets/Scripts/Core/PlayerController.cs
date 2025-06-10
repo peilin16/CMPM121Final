@@ -74,9 +74,9 @@ public class PlayerController : MonoBehaviour ,Controller
         //var r = GameManager.Instance.relicManager.GetRelic<MysteriousMask> ("Mysterious Mask");
         //var r = GameManager.Instance.relicManager.GetRelic<KnightShield> ("Knight Shield");
         //var r = GameManager.Instance.relicManager.GetRelic<GoldenCrown> ("Golden Crown");
-        var r = GameManager.Instance.relicManager.GetRelic<LifeLink> ("Life Link");
+        /*var r = GameManager.Instance.relicManager.GetRelic<LifeLink> ("Life Link");
         r.Application(this);
-        carriedRelic.Add(r);
+        carriedRelic.Add(r);*/
     }
 
 

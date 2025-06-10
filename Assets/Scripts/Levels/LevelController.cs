@@ -46,8 +46,8 @@ public class LevelController : MonoBehaviour
             OpenRoomGates(currentRoom);
             //currentRoom = null;
         }
-        
 
+        GameManager.Instance.record.Update();
     }
 
     private void CloseRoomGates(Room room)
