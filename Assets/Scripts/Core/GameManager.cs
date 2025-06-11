@@ -54,6 +54,7 @@ public class GameManager
     public ProjectileManager projectileManager;
     public SpellIconManager spellIconManager;
     public SpellBuilder spellBuilder;
+    public PickableRelic currentPickableRelic; 
     //enemy
     public EnemySpriteManager enemySpriteManager;
     public EnemyCharacterManager enemyCharacterManager;
