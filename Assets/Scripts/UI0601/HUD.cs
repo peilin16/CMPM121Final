@@ -16,14 +16,14 @@ public class HUD : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.K))
+        /*if (Input.GetKey(KeyCode.K))
         {
             EventCenter.Broadcast(EventDefine.ShowSpellSelectorPanel);
         }
         if (Input.GetKey(KeyCode.J))
         {
             EventCenter.Broadcast(EventDefine.ShowRelicSelectorPanel);
-        }
+        }*/
     }
 
     private void OnClickRestartBtn()

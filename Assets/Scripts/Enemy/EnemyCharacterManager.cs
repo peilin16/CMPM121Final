@@ -16,7 +16,6 @@ public class EnemyCharacterManager
     {
         if (enemyDB.TryGetValue(type, out EnemyCharacter enemy))
         {
-            // ����ԭʼʵ�����Ѿ��Ǿ�������ࣩ
             return enemy;
         }
         Debug.LogWarning($"Enemy of type {type} not found.");

@@ -172,7 +172,6 @@ public class Spell
         string traj = this.final_trajectory;
         float lifetime = this.final_life_time;
 
-
         if (!string.IsNullOrEmpty(data.projectile.lifetime))
         {
             GameManager.Instance.projectileManager.CreateProjectile(spriteIndex, traj, where, target - where, speed, OnHit, lifetime);

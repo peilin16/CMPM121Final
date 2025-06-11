@@ -40,9 +40,10 @@ public class SpellSelectorPanel : MonoBehaviour
 
     void ShowSpellSelectorPanel()
     {
+
         //Test TODO 
-        GameManager.Instance.playerSpriteManager.currentIconIndex = 0;
-        playerController.loadCharacter(0);
+       /* GameManager.Instance.playerSpriteManager.currentIconIndex = 0;
+        playerController.loadCharacter(0);*/
         
         gameObject.SetActive(true);
         RandomSpell();
@@ -66,7 +67,7 @@ public class SpellSelectorPanel : MonoBehaviour
         playerSpellUIs.spellUIs[playerController.spellNum].GetComponent<SpellUI>().SetSpell(generatedSpells[currentSpellIndex]);
 
         playerController.spellNum += 1;
-        
+        Debug.LogWarning(playerController.spellNum);
         gameObject.SetActive(false);
     }
 

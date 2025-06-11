@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour ,Controller
     //public SpellUI[] spellUIs; // Array of 2 UI panels
     public PlayerTile playerTile;
 
-    public int spellNum = 1;
+    public int spellNum = 2;
     private int currentSpellIndex = 0;
     //public string playerID = "000001";
 
@@ -95,8 +95,7 @@ public class PlayerController : MonoBehaviour ,Controller
         healthui.SetHealth(player.hp);
         manaui.SetSpellCaster(player.spellcaster);
         player.spellcaster.playerController = this;
-        
-        StartCoroutine(player.spellcaster.ManaRegeneration());
+        CoroutineManager.Instance.StartManagedCoroutine("Player_controller", "Mana_reg", player.spellcaster.ManaRegeneration());
         foreach (var relic in carriedRelic)
         {
             //CoroutineManager.Instance.StartManagedCoroutine("Player_carried_relic", relic.name, relic.RelicCoroutine(this));

@@ -6,36 +6,8 @@
         "enemies": [
           {
             "enemy": "zombie",
-            "count": 5,
-            "hp": 27,
-            "location": "random"
-          }
-        ]
-      },
-      {
-        "enemies": [
-          {
-            "enemy": "zombie",
-            "count": 7,
-            "hp": 27,
-            "location": "random"
-          }
-        ]
-      },
-      {
-        "enemies": [
-          {
-            "enemy": "zombie",
-            "count": 4,
-            "hp": 27,
-            "damage": 5,
-            "location": "random"
-          },
-          {
-            "enemy": "skeleton",
             "count": 1,
-            "hp": 41,
-            "speed": 7,
+            "hp": 27,
             "location": "random"
           }
         ]

@@ -23,8 +23,8 @@ public class ProjectileController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Layer1")
-            return;
+       /* if (collision.gameObject.name == "Layer1")
+            return;*/
             //Debug.Log("Collided with: " + );
 
         if (collision.gameObject.CompareTag("projectile")) {

@@ -59,10 +59,12 @@ public class SpellCaster
     public Vector3 current_target;
     public IEnumerator ManaRegeneration()
     {
+        
         while (true)
         {
             mana += mana_reg;
             mana = Mathf.Min(mana, max_mana);
+            Debug.Log("Mana");
             yield return new WaitForSeconds(1);
         }
     }
@@ -113,11 +115,16 @@ public class SpellCaster
         spell.target = target;
         if (mana >= spell.GetManaCost() && spell.IsReady())
         {
+            Debug.Log($"Spell Cast:[Spell Reset] {spell.GetName()} - Damage: {spell.final_damage},  -Base Damage: {spell.data.base_damage}, Mana Cost: {spell.final_mana_cost}");
             mana -= spell.GetManaCost();
             yield return spell.Cast(where, target, team);
         }
+        else
+        {
+            Debug.Log($"Not enought Mana");
+        }
 
-        Debug.Log($"Spell Cast:[Spell Reset] {spell.GetName()} - Damage: {spell.final_damage},  -Base Damage: {spell.data.base_damage}, Mana Cost: {spell.final_mana_cost}");
+        
         //OnSpellCast?.Invoke(spell);
         yield break;
     }
