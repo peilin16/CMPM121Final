@@ -35,7 +35,10 @@ public class EventBus
     // spell collison 
     public Action<Controller> SpellCollision;
     public Action<Controller> SpellCollideToWall;
-    
+    //room
+    public Action<Controller> CleanRoomAction;
+
+
     public void TriggerStandStill()
     {
         OnPlayerStandStill?.Invoke();
@@ -55,6 +58,10 @@ public class EventBus
         SpellCollideToWall?.Invoke(c);
     }
 
+    public void TriggerCleanRoomAction(Controller c)
+    {
+        CleanRoomAction?.Invoke(c);
+    }
     public event Action<Vector3, Damage, Hittable> OnPhysicalDamage;
 
     public void TriggerPhysicalDamage(Vector3 position, Damage damage, Hittable target)

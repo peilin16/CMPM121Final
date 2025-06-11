@@ -23,6 +23,10 @@ public class ProjectileController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.name == "Layer1")
+            return;
+            //Debug.Log("Collided with: " + );
+
         if (collision.gameObject.CompareTag("projectile")) {
             
             return;
@@ -35,7 +39,7 @@ public class ProjectileController : MonoBehaviour
             
             if (ec != null)
             {
-                //我会在这里触发两次事件请通过controller的子类型区分
+                //if == controller
                 EventBus.Instance.TriggerSpellHitEnemy(pc);
                 //EventBus.Instance.TriggerSpellHitEnemy(ec);
                 Debug.Log("project tile collison to enemy");
@@ -57,10 +61,10 @@ public class ProjectileController : MonoBehaviour
             // Trigger SpellCollideToWall
             EventBus.Instance.TriggerSpellCollideToWall(pc);
 
-            //Debug.Log("project tile collison to wall");
+            Debug.Log("project tile collison to wall");
         }
         EventBus.Instance.TriggerSpellCollision(pc);
-        //Debug.Log("project tile collison");
+        Debug.Log("project tile collison");
         Destroy(gameObject);
     }
 

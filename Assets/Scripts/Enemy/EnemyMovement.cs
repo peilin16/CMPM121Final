@@ -52,11 +52,11 @@ public class EnemyMovement
             return; // arrive destination.*/
 
 
-        Debug.Log("D: "+Vector3.Distance(enemy.transform.position, destination));
+        //Debug.Log("D: "+Vector3.Distance(enemy.transform.position, destination));
         if (Vector3.Distance(enemy.transform.position, destination) <= stopDistance)
         {
             enemy.GetComponent<Unit>().movement = Vector2.zero;
-            Debug.Log("stop");
+            //Debug.Log("stop");
             return;
         }
 
@@ -83,7 +83,7 @@ public class EnemyMovement
         if (Physics2D.OverlapCircle(target, 0.3f, wallMask))
         {
             // check the position reachable
-            Debug.Log("sec refind c:" + currentPath.Count + " index:" + pathIndex);
+            //Debug.Log("sec refind c:" + currentPath.Count + " index:" + pathIndex);
             currentPath = Pathfinder.FindPath(enemy.transform.position, destination, collisionTilemap, wallMask);
             pathIndex = 0;
             return;
@@ -94,7 +94,7 @@ public class EnemyMovement
         if (hit.collider != null)
         {
             // If be block
-            Debug.Log("wall refind c:" + currentPath.Count + " index:" + pathIndex);
+            //Debug.Log("wall refind c:" + currentPath.Count + " index:" + pathIndex);
             currentPath = Pathfinder.FindPath(enemy.transform.position, destination, collisionTilemap, wallMask);
             pathIndex = 0;
             return;

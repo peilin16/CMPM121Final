@@ -2,5 +2,7 @@ public enum EventDefine
 {
     ShowSettingPanel,
     ShowMakerPanel,
-    ChoosenLevelName
+    ChoosenLevelName,
+    ShowSpellSelectorPanel,
+    ShowRelicSelectorPanel
 }
