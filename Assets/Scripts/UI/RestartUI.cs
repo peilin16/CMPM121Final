@@ -1,28 +1,44 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;  // for Text
+
 
 public class RestartUI : MonoBehaviour
 {
-    public GameObject characterSelectorUI; // Assign this in Inspector
-    public GameObject restartUI;
+
     public static RestartUI Instance;
+    public Text DefectEnemyTipText;
+    public Text RoomCleanText;
+    public Text SpendTimeText;
+    public Text ScoreText;
     void Awake()
     {
         Instance = this;
-        restartUI.SetActive(false);
+        gameObject.SetActive(false);
+        // Subscribe to the player death event
+        
     }
 
-    public void Show()
+    void OnDestroy()
     {
-        restartUI.SetActive(true);
+        // Clean up to prevent memory leaks
     }
+
+    public void HandleData()
+    {
+        var record = GameManager.Instance.recordCenter;
+
+        DefectEnemyTipText.text = $"Defeated Enemies: {record.Kill_enemies}";
+        RoomCleanText.text = $"Rooms Cleaned: {record.CleanRoom}";
+        SpendTimeText.text = $"Time Spent: {record.SpendTime} sec";
+        ScoreText.text = $"Score: {record.Score:F1}";
+    }
+
     public void RestartGame()
     {
         GameManager.Instance.state = GameManager.GameState.PREGAME;
-        
-        characterSelectorUI.SetActive(true);
-        restartUI.SetActive(false);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        gameObject.SetActive(false);
+        GameManager.Instance.RestartGame();
     }
 }

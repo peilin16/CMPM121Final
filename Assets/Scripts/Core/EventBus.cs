@@ -37,7 +37,8 @@ public class EventBus
     public Action<Controller> SpellCollideToWall;
     //room
     public Action<Controller> CleanRoomAction;
-
+    //Game Victory
+    public Action<Controller> Victory;
 
     public void TriggerStandStill()
     {
@@ -84,8 +85,8 @@ public class EventBus
     }
    public void TriggerOnPlayerDeath(GameObject player)
     {
-        if(GameManager.Instance.state == GameManager.GameState.INWAVE)
-            OnPlayerDeath?.Invoke(player);
+        
+       OnPlayerDeath?.Invoke(player);
     }
 
 

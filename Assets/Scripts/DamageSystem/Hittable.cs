@@ -17,10 +17,10 @@ public class Hittable
 
         EventBus.Instance.TriggerPhysicalDamage(owner.transform.position, damage, this);
 
-        // 扣血逻辑
+        
         hp -= (int)Math.Round(damage.amount);
 
-        // 根据队伍触发不同事件
+        
         switch (team)
         {
             case Team.PLAYER:
@@ -37,7 +37,10 @@ public class Hittable
         {
             hp = 0;
             if (team == Team.PLAYER)
+            {
+                
                 EventBus.Instance.TriggerOnPlayerDeath(owner);
+            }
             else
                 EventBus.Instance.TriggerOnMonsterDeath(owner);
         }

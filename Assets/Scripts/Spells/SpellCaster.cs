@@ -64,7 +64,7 @@ public class SpellCaster
         {
             mana += mana_reg;
             mana = Mathf.Min(mana, max_mana);
-            Debug.Log("Mana");
+            //Debug.Log("Mana");
             yield return new WaitForSeconds(1);
         }
     }
