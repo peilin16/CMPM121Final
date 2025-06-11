@@ -16,7 +16,7 @@ public class EnemyCharacterManager
     {
         if (enemyDB.TryGetValue(type, out EnemyCharacter enemy))
         {
-            // ·µ»ØÔ­Ê¼ÊµÀý£¨ÒÑ¾­ÊÇ¾ßÌåµÄ×ÓÀà£©
+            // ï¿½ï¿½ï¿½ï¿½Ô­Ê¼Êµï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à£©
             return enemy;
         }
         Debug.LogWarning($"Enemy of type {type} not found.");
@@ -56,14 +56,14 @@ public class EnemyCharacterManager
                     character = new ZombieCharacter(sprite, name); 
                     break;
 
-                /*case "warlock":
+                case "warlock":
                     Debug.Log(name);
                     character = new WarlockCharacter(sprite, name);
                     break;
                 case "skeleton":
                     Debug.Log(name);
                     character = new SkeletonCharacter(sprite, name);
-                    break;*/
+                    break;
                 default:
                     character = new EnemyCharacter(sprite, name);
                     break;

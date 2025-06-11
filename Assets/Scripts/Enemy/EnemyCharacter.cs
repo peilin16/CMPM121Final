@@ -44,8 +44,7 @@ public class EnemyCharacter : Character
     
     public override void StartLevel() {
         
-    }
-    public void InitController(EnemyController c)
+    }    public virtual void InitController(EnemyController c)
     {
         //if (this.hp == null)
         this.hp = new Hittable(this._final_healthly, Hittable.Team.MONSTERS, gameObject);
@@ -54,7 +53,7 @@ public class EnemyCharacter : Character
     }
 
 
-    //µ±Ç°Ä¬ÈÏÏòÍæ¼ÒÒÆ¶¯µÄÂß¼­
+    //ï¿½ï¿½Ç°Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
     public virtual void Behavior(GameObject gameObject)
     {
 
@@ -66,7 +65,7 @@ public class EnemyCharacter : Character
 
         if (distance < 2f)
         {
-            // ¼òµ¥½üÕ½¹¥»÷Âß¼­
+            // ï¿½òµ¥½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
             EnemyController ctrl = gameObject.GetComponent<EnemyController>();
             if (ctrl.last_attack + 2f < Time.time)
             {
@@ -78,7 +77,13 @@ public class EnemyCharacter : Character
         {
             gameObject.GetComponent<Unit>().movement = direction.normalized * final_speed;
         }*/
-        //Çë¸ù¾Ý×Ô¼ºµÄÐèÇó¸ü¸Äbehavoir·½·¨
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½behavoirï¿½ï¿½ï¿½ï¿½
+    }
+    // New method for updating behavior including spell casting
+    public virtual void UpdateBehavior(Vector3 playerPosition)
+    {
+        // Default behavior - can be overridden by subclasses
+        // This method is called from EnemyController.Update() for spell casting
     }
     public virtual EnemyCharacter Clone()
     {
