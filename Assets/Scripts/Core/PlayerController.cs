@@ -55,13 +55,22 @@ public class PlayerController : MonoBehaviour ,Controller
     public void Start()
     {
         Controller_ID = GameManager.Instance.GenerateID();
-        unit = GetComponent<Unit>();
-
-        GameManager.Instance.player = this.gameObject;
+        
         GameManager.Instance.playerController = this;
+        GameManager.Instance.playerStartPosition = transform.position;
+        ControllerInit();
+    }
+
+
+    public void ControllerInit()
+    {
+        unit = GetComponent<Unit>();
+        GameManager.Instance.player = this.gameObject;
         EventBus.Instance.OnPlayerDeath += HandlePlayerDeath;
         EventBus.Instance.OnPlayerDamaged += OnHurt;
     }
+
+
     public void loadCharacter(int index = 0)
     {
         //Relic effect test
@@ -206,14 +215,16 @@ public class PlayerController : MonoBehaviour ,Controller
     }
 
 
-    public void Die()
+    public void Die(bool isDestory = false)
     {
         player.Die();
         //Debug.Log("aaa");
         EventBus.Instance.OnPlayerDamaged -= OnHurt;
         EventBus.Instance.OnPlayerDeath -= HandlePlayerDeath;
         GameManager.Instance.state = GameManager.GameState.GAMEOVER;
-        GameManager.Instance.RestartGame();
+        GameManager.Instance.enemyManager.DestroyAllEnemies();
+
+        //GameManager.Instance.RestartGame();
     }
 
 }

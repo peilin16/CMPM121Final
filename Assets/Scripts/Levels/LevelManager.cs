@@ -56,7 +56,27 @@ public class LevelManager
         Debug.Log($"Level {levelName} loaded with {newLevel.rooms.Count} rooms.");
     }
 
+    public void InitLevel(int currentLevel)
+    {
+        string levelName = $"level{currentLevel}";
 
+        if (!levels.TryGetValue(levelName, out Level level))
+        {
+            Debug.LogWarning($"InitLevel: Level '{levelName}' not found. Attempting to reload.");
+            LoadLevels(currentLevel); // Try loading if not present
+            if (!levels.TryGetValue(levelName, out level))
+                return;
+        }
+
+        foreach (Room room in level.rooms)
+        {
+            room.isActive = false;
+            room.isCleared = false;
+            //room.waves.Clear(); 
+        }
+
+        Debug.Log($"Level {levelName} has been reset.");
+    }
 
 
 

@@ -22,28 +22,31 @@ public class EnemyManager
 
     public void RemoveEnemy(GameObject enemy)
     {
-        GameManager.Instance.defectCount++;
         enemies.Remove(enemy);
+        GameObject.Destroy(enemy);
     }
-    //销毁所有的敌人对象
+
     public void DestroyAllEnemies()
     {
-        List<GameObject> enemiesToDestroy = new List<GameObject>(enemies);
-        foreach (GameObject enemy in enemiesToDestroy)
+        Debug.Log("Destory" + enemy_count);
+
+        // 创建副本以避免修改原列表
+        List<GameObject> toDestroy = new List<GameObject>(enemies);
+
+        foreach (GameObject enemy in toDestroy)
         {
-            if (enemy != null)
+            if (enemy == null) continue;
+
+            EnemyController controller = enemy.GetComponent<EnemyController>();
+            if (controller != null)
             {
-                EnemyController controller = enemy.GetComponent<EnemyController>();
-                if (controller != null)
-                {
-                    controller.Die();
-                    GameObject.Destroy(enemy);
-                }
+                controller.Die(true);
             }
         }
-        enemies.Clear();
+
+        enemies.Clear(); // 最后清空一次
     }
-    //获取最近的敌人
+
     public GameObject GetClosestEnemy(Vector3 point)
     {
         if (enemies == null || enemies.Count == 0) return null;

@@ -71,7 +71,7 @@ public class SettingPanel : MonoBehaviour
         Apply(spriteView2.gameObject, "warlock", GameManager.Instance.playerSpriteManager.Get(1));
         Apply(spriteView3.gameObject, "battlemage", GameManager.Instance.playerSpriteManager.Get(2));
 
-       
+        
     }
 
     public void Apply(GameObject characterObj, string label, Sprite sprite)

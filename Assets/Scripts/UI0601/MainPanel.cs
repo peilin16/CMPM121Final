@@ -23,6 +23,7 @@ public class MainPanel : MonoBehaviour
         settingsButton.onClick.AddListener(OnSettingsClick);
         makerBtn.onClick.AddListener(OnMakerClick);
         EventCenter.AddListener<string>(EventDefine.ChoosenLevelName,ChoosenLevelName);
+        GameManager.Instance.StartPanel = this.gameObject;
     }
 
     void ChoosenLevelName(string levelName)
@@ -54,6 +55,7 @@ public class MainPanel : MonoBehaviour
         {
             StartCoroutine(ShowTips());
         }
+        GameManager.Instance.uiManager.isDisplay = false;
     }
 
     IEnumerator ShowTips()

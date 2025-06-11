@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour, Controller
     public Character character
     {
         get => enemy;
-       set => enemy = (EnemyCharacter)value;//���������� ֱ�ӵ���enemy���� ��Ҫ��set��Ȼ�Ḳ�ǵ�ԭ�е�����
+       set => enemy = (EnemyCharacter)value;
     }
 
     public HealthBar HealthUI
@@ -68,7 +68,10 @@ public class EnemyController : MonoBehaviour, Controller
         wallTilemap = GameObject.Find("Wall").GetComponent<Tilemap>();
         //init movement
         movement = new EnemyMovement(this, wallTilemap, LayerMask.GetMask("Wall"));
-
+        Controller_ID = GameManager.Instance.GenerateID();
+        target = GameManager.Instance.player.transform;
+        //hp.OnDeath += Die;
+        EventBus.Instance.OnMonsterDeath += (gameObject) => this.Die();
 
         /*Collider2D enemyCol = GetComponent<Collider2D>();
         Collider2D playerCol = GameManager.Instance.player.GetComponent<Collider2D>();
@@ -77,10 +80,7 @@ public class EnemyController : MonoBehaviour, Controller
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Controller_ID = GameManager.Instance.GenerateID();
-        target = GameManager.Instance.player.transform;
-        //hp.OnDeath += Die;
-        EventBus.Instance.OnMonsterDeath += (gameObject) => this.Die();
+
         
     }    // Update is called once per frame
     void Update()
@@ -122,6 +122,7 @@ public class EnemyController : MonoBehaviour, Controller
 
     public void BeHitting(Damage damage, GameObject obj)
     {
+
         if (obj == this.gameObject)
         {
             //Debug.Log("bbb");
@@ -129,16 +130,21 @@ public class EnemyController : MonoBehaviour, Controller
         }
         
     }
-    public void Die()
+    public void Die(bool isDestory = false)
     {
-        if (!dead && this.enemy.hp.hp <= 0)
+        
+        if (isDestory == true || (!dead && this.enemy.hp.hp <= 0))
         {
             EventBus.Instance.OnMonsterDamaged -= this.BeHitting;
             EventBus.Instance.OnMonsterDeath -= (gameObject) => this.Die();
+            //enemy.gameObject = null;
+            //this.enemy = null;
             dead = true;
+            Debug.Log("Die");
+            //Destroy(this.gameObject);
+            Destroy(this.enemy.gameObject); // Redundant & dangerous
             GameManager.Instance.enemyManager.RemoveEnemy(this.gameObject);
-            Destroy(this.gameObject);
-            Destroy(this.enemy.gameObject);
+            
         }
     }
 }

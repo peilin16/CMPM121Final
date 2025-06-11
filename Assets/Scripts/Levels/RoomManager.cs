@@ -94,21 +94,41 @@ public class RoomManager : MonoBehaviour
 
             Debug.Log($"Room {name} loaded with {room.waves.Count} waves.");
         }
+        //LoadVictoryRoom();
     }
-
-
-
-    void Update()
+    public void LoadVictoryRoom()
     {
-        /*Vector3 pos = player.position;
-        Room room = GetRoomFromPosition(pos);
-        if (room != null && currentRoom != room)
+        GameObject victoryGO = GameObject.Find("Victory_Room");
+        if (victoryGO == null)
         {
-            currentRoom = room;
-            //currentRoom.isCleared = true;
-            Debug.Log($"Entered Room: {currentRoom.name}");
-        }*/
+            Debug.LogWarning("Victory_Room not found in scene.");
+            return;
+        }
+
+        BoxCollider2D collider = victoryGO.GetComponent<BoxCollider2D>();
+        if (collider == null)
+        {
+            Debug.LogWarning("Victory_Room has no BoxCollider2D.");
+            return;
+        }
+
+        Bounds bounds = collider.bounds;
+        string name = victoryGO.name;
+        int id = name.GetHashCode();
+
+        Room room = new Room(name, id, bounds);
+        room.isCleared = true;   //
+        room.isActive = false;
+
+        roomDict[name] = room;
+
+        Debug.Log(room.name+" loaded into roomDict.");
     }
+
+
+
+
+
     //Not Recommand
     public Room GetRoomFromPosition(Vector3 pos)
     {

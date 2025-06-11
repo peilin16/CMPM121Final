@@ -44,7 +44,8 @@ public class EnemyCharacter : Character
     
     public override void StartLevel() {
         
-    }    public virtual void InitController(EnemyController c)
+    }
+    public virtual void InitController(EnemyController c)
     {
         //if (this.hp == null)
         this.hp = new Hittable(this._final_healthly, Hittable.Team.MONSTERS, gameObject);

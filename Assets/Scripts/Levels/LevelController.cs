@@ -11,11 +11,15 @@ public class LevelController : MonoBehaviour
     private Room currentRoom;
 
     private Level currentLevel;
-    
 
+    private bool isGateClose = false;
 
 
     void Start()
+    {
+        InitController();
+    }
+    public void InitController()
     {
         currentLevel = GameManager.Instance.levelManager.GetLevel();
 
@@ -23,7 +27,6 @@ public class LevelController : MonoBehaviour
         if (lastRoom != null)
             CloseRoomGates(lastRoom);
     }
-
     void Update()
     {
         
@@ -46,19 +49,27 @@ public class LevelController : MonoBehaviour
             OpenRoomGates(currentRoom);
             //currentRoom = null;
         }
-
+        else if (currentRoom != null && "Room_12_1".Equals(currentRoom.name))
+        {
+            GameManager.Instance.state = GameManager.GameState.VICTORY;
+            //Time.timeScale = 0f;
+        }else if(currentRoom == null && isGateClose)
+        {
+            OpenRoomGates(currentRoom);
+        }
         GameManager.Instance.recordCenter.Update();
 
     }
 
     private void CloseRoomGates(Room room)
     {
+        isGateClose = true;
         gate.SetActive(true); // Open Gates
         Debug.Log($"Gates closed for room: {room.name}");
     }
     private void OpenRoomGates(Room room)
     {
+        isGateClose = false;
         gate.SetActive(false); // Close
-        Debug.Log($"Gates closed for room: {room.name}");
     }
 }

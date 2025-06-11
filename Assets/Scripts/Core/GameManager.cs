@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using UnityEngine.SceneManagement;
 public class GameManager 
 {
     public enum GameState
@@ -10,7 +10,7 @@ public class GameManager
         PREGAME,
         INWAVE, 
         WAVEEND,//
-
+        VICTORY,
         EXPEDITION,
         COUNTDOWN,
         GAMEOVER
@@ -62,13 +62,14 @@ public class GameManager
     public GameObject player;
     public PlayerController playerController;
     public PlayerSpriteManager playerSpriteManager;
+    public Vector3 playerStartPosition;
     //relic
     public RelicIconManager relicIconManager;
     public RelicManager relicManager;
     //record 
     public RecordCenter recordCenter;
 
-
+    public UIManager uiManager;
 
 
     //other
@@ -76,18 +77,30 @@ public class GameManager
     public float waveSpendTime = 0f;
     public bool isTiming = false;
     public string difficultly = "Easy";
-
+    public GameObject StartPanel;
     public void RestartGame()
     {
-        enemyManager.DestroyAllEnemies();
+        GameManager.Instance.state = GameManager.GameState.PREGAME;
+        
         CoroutineManager.Instance.StopGroup("EnemySpawn");
+        StartPanel.SetActive(true);
+
+        player.transform.position = playerStartPosition;
+        
+        levelManager.InitLevel(levelManager.currentLevel);
+        recordCenter.Init();
+        playerController.ControllerInit();
+        
+        // Restart current scene
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //player.player.hp.hp = 1;
     }
 
     public void StartGame()
     {
         GameManager.Instance.state = GameManager.GameState.EXPEDITION;
-        GameManager.Instance.player.GetComponent<PlayerController>().StartLevel();
+        GameManager.Instance.playerController.StartLevel();
+        
     }
 
 }

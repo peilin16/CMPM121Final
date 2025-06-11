@@ -41,7 +41,7 @@ public class Hittable
                 
                 EventBus.Instance.TriggerOnPlayerDeath(owner);
             }
-            else
+            else if(team == Team.MONSTERS)
                 EventBus.Instance.TriggerOnMonsterDeath(owner);
         }
     }
