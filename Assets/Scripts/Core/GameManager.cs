@@ -36,6 +36,7 @@ public class GameManager
                 //theInstance.roomManager = new RoomManager();
                 theInstance.levelManager = new LevelManager();
                 theInstance.recordCenter = new RecordCenter();
+                theInstance.treasureManager = new TreasureManager();
             }    
             return theInstance;
         }
@@ -68,9 +69,9 @@ public class GameManager
     public RelicManager relicManager;
     //record 
     public RecordCenter recordCenter;
-
+    //Other
     public UIManager uiManager;
-
+    public TreasureManager treasureManager;
 
     //other
     public int defectCount;

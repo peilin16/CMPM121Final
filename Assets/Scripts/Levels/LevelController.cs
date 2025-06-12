@@ -49,7 +49,7 @@ public class LevelController : MonoBehaviour
             OpenRoomGates(currentRoom);
             //currentRoom = null;
         }
-        else if (currentRoom != null && "Room_12_1".Equals(currentRoom.name))
+        else if (currentRoom != null && "Room_13_1".Equals(currentRoom.name))
         {
             GameManager.Instance.state = GameManager.GameState.VICTORY;
             //Time.timeScale = 0f;
