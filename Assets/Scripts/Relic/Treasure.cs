@@ -37,7 +37,7 @@ public class Treasure : MonoBehaviour
         {
             tilemap.SetTile(tilePosition, openedTile);
             opened = true;
-            EventCenter.Broadcast(EventDefine.ShowRelicSelectorPanel);
+            GameManager.Instance.uiManager.relicSelector.ShowRelicSelectorPanel();
         }
     }
 

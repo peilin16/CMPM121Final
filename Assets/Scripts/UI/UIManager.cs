@@ -4,6 +4,10 @@ public class UIManager : MonoBehaviour
 {
     public GameObject restartUI;
     public bool isDisplay = false;
+
+    public RelicSelectorPanel relicSelector;
+    public SpellSelectorPanel spellSelector;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

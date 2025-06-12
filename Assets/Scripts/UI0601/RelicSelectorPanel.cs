@@ -55,8 +55,9 @@ public class RelicSelectorPanel : MonoBehaviour
     }
     
 
-    void ShowRelicSelectorPanel()
+    public void ShowRelicSelectorPanel()
     {
+        Debug.Log("Show");
         RandomRelics();
         gameObject.SetActive(true);
     }
@@ -85,10 +86,10 @@ public class RelicSelectorPanel : MonoBehaviour
         {
 
             int index = Random.Range(0, available.Count);
-            Debug.Log("index:" + index + " count:" + available.Count);
+            //Debug.Log("index:" + index + " count:" + available.Count);
             var r = available[index];
-            Debug.Log("name:" + r.name);
-            Debug.Log("name:" + r.iconIndex);
+            //Debug.Log("name:" + r.name);
+            //Debug.Log("name:" + r.iconIndex);
             available.RemoveAt(index);
             displayRelic.Add(r);
             
