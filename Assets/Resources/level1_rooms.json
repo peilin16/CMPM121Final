@@ -14,7 +14,6 @@
       }
     ]
   },
-
   {
     "name": "Room_2_1",
     "waves": [
@@ -64,8 +63,7 @@
         ]
       }
     ]
-  }
-  ,
+  },
   {
     "name": "Room_3_1",
     "waves": [
@@ -73,13 +71,13 @@
         "enemies": [
           {
             "enemy": "zombie",
-            "count": 12,
+            "count": 6,
             "hp": 34,
             "location": "random"
           },
           {
             "enemy": "warlock",
-            "count": 3,
+            "count": 1,
             "hp": 66,
             "speed": 7,
             "location": "random"
@@ -114,14 +112,14 @@
         "enemies": [
           {
             "enemy": "zombie",
-            "count": 7,
+            "count": 5,
             "hp": 34,
             "damage": 5,
             "location": "random"
           },
           {
             "enemy": "warlock",
-            "count": 3,
+            "count": 2,
             "hp": 66,
             "speed": 7,
             "location": "random"
@@ -129,7 +127,837 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Room_4_1",
+    "waves": [
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 8,
+            "hp": 36,
+            "damage": 6,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 4,
+            "hp": 48,
+            "speed": 8,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "skeleton",
+            "count": 5,
+            "hp": 48,
+            "speed": 8,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 2,
+            "hp": 70,
+            "speed": 7,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "warlock",
+            "count": 3,
+            "hp": 70,
+            "speed": 7,
+            "location": "random"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Room_5_1",
+    "waves": [
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 10,
+            "hp": 38,
+            "damage": 7,
+            "speed": 4,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 5,
+            "hp": 50,
+            "speed": 9,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 1,
+            "hp": 75,
+            "speed": 8,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "skeleton",
+            "count": 7,
+            "hp": 50,
+            "speed": 9,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 2,
+            "hp": 75,
+            "speed": 8,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 12,
+            "hp": 38,
+            "damage": 7,
+            "speed": 4,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 3,
+            "hp": 75,
+            "speed": 8,
+            "location": "random"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Room_6_1",
+    "waves": [
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 12,
+            "hp": 40,
+            "damage": 8,
+            "speed": 4,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 6,
+            "hp": 55,
+            "speed": 9,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 2,
+            "hp": 80,
+            "speed": 8,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "skeleton",
+            "count": 8,
+            "hp": 55,
+            "speed": 9,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 3,
+            "hp": 80,
+            "speed": 8,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 80,
+            "speed": 8,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 16,
+            "hp": 40,
+            "damage": 8,
+            "speed": 5,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 7,
+            "hp": 55,
+            "speed": 10,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 3,
+            "hp": 80,
+            "speed": 8,
+            "location": "random"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Room_7_1",
+    "waves": [
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 14,
+            "hp": 42,
+            "damage": 9,
+            "speed": 5,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 7,
+            "hp": 58,
+            "speed": 10,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 2,
+            "hp": 85,
+            "speed": 9,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "skeleton",
+            "count": 9,
+            "hp": 58,
+            "speed": 10,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 3,
+            "hp": 85,
+            "speed": 9,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 85,
+            "speed": 9,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 18,
+            "hp": 42,
+            "damage": 9,
+            "speed": 5,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 8,
+            "hp": 58,
+            "speed": 10,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 85,
+            "speed": 9,
+            "location": "random"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Room_8_1",
+    "waves": [
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 16,
+            "hp": 45,
+            "damage": 10,
+            "speed": 5,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 8,
+            "hp": 60,
+            "speed": 11,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 3,
+            "hp": 90,
+            "speed": 9,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "skeleton",
+            "count": 10,
+            "hp": 60,
+            "speed": 11,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 90,
+            "speed": 9,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 20,
+            "hp": 45,
+            "damage": 10,
+            "speed": 6,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 90,
+            "speed": 9,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 22,
+            "hp": 45,
+            "damage": 10,
+            "speed": 6,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 9,
+            "hp": 60,
+            "speed": 11,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 90,
+            "speed": 9,
+            "location": "random"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Room_9_1",
+    "waves": [
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 18,
+            "hp": 48,
+            "damage": 11,
+            "speed": 6,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 9,
+            "hp": 65,
+            "speed": 12,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 3,
+            "hp": 95,
+            "speed": 10,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "skeleton",
+            "count": 11,
+            "hp": 65,
+            "speed": 12,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 95,
+            "speed": 10,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 24,
+            "hp": 48,
+            "damage": 11,
+            "speed": 6,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 95,
+            "speed": 10,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 26,
+            "hp": 48,
+            "damage": 11,
+            "speed": 6,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 10,
+            "hp": 65,
+            "speed": 12,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 95,
+            "speed": 10,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 100,
+            "speed": 10,
+            "location": "random"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Room_10_1",
+    "waves": [
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 20,
+            "hp": 50,
+            "damage": 12,
+            "speed": 6,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 10,
+            "hp": 70,
+            "speed": 13,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 105,
+            "speed": 11,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "skeleton",
+            "count": 12,
+            "hp": 70,
+            "speed": 13,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 105,
+            "speed": 11,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 28,
+            "hp": 50,
+            "damage": 12,
+            "speed": 7,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 105,
+            "speed": 11,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 30,
+            "hp": 50,
+            "damage": 12,
+            "speed": 7,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 11,
+            "hp": 70,
+            "speed": 13,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 105,
+            "speed": 11,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 110,
+            "speed": 11,
+            "location": "random"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Room_11_1",
+    "waves": [
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 22,
+            "hp": 55,
+            "damage": 13,
+            "speed": 7,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 11,
+            "hp": 75,
+            "speed": 14,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 115,
+            "speed": 12,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "skeleton",
+            "count": 13,
+            "hp": 75,
+            "speed": 14,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 115,
+            "speed": 12,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 32,
+            "hp": 55,
+            "damage": 13,
+            "speed": 7,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 115,
+            "speed": 12,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 34,
+            "hp": 55,
+            "damage": 13,
+            "speed": 7,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 12,
+            "hp": 75,
+            "speed": 14,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 115,
+            "speed": 12,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 120,
+            "speed": 12,
+            "location": "random"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Room_12_1",
+    "waves": [
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 24,
+            "hp": 60,
+            "damage": 15,
+            "speed": 8,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 12,
+            "hp": 80,
+            "speed": 15,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 125,
+            "speed": 13,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "skeleton",
+            "count": 14,
+            "hp": 80,
+            "speed": 15,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 125,
+            "speed": 13,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 36,
+            "hp": 60,
+            "damage": 15,
+            "speed": 8,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 125,
+            "speed": 13,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 38,
+            "hp": 60,
+            "damage": 15,
+            "speed": 8,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 13,
+            "hp": 80,
+            "speed": 15,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 125,
+            "speed": 13,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 150,
+            "speed": 15,
+            "location": "random"
+          }
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "enemy": "zombie",
+            "count": 40,
+            "hp": 70,
+            "damage": 18,
+            "speed": 9,
+            "location": "random"
+          },
+          {
+            "enemy": "skeleton",
+            "count": 14,
+            "hp": 90,
+            "speed": 16,
+            "location": "random"
+          },
+          {
+            "enemy": "warlock",
+            "count": 4,
+            "hp": 180,
+            "speed": 16,
+            "location": "random"
+          }
+        ]
+      }
+    ]
   }
-
-
 ]
